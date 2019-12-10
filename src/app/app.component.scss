@@ -1,0 +1,42 @@
+header {
+    background-color: #88f;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+nav > ul {
+    display: flex;
+    background-color: #66f;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item:hover {
+    background-color: #99f;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+footer {
+    height: 35px;
+    text-align: center;
+    padding-top: 15px;
+}
