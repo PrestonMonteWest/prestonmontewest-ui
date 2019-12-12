@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PostService } from '../post.service';
 import { Post } from '../post';
 
@@ -9,15 +10,13 @@ import { Post } from '../post';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  post: Post;
+  posts: Post[] = [];
 
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.postService.getPostByTitle('My First Post').subscribe((data: Post) => {
-      this.post = data;
-    })
+    this.postService.getPosts(9).subscribe((data: Post[]) => {
+      this.posts = data;
+    });
   }
-
 }
