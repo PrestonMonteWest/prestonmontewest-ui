@@ -1,0 +1,52 @@
+h2 {
+  font-size: 1.75em;
+}
+
+.box {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(218, 218, 218);
+  background-color: rgb(236, 236, 236);
+}
+
+.post-list {
+  display: flex;
+
+  .post-list-item {
+    box-sizing: border-box;
+    width: 22.5%;
+    margin-left: 2%;
+
+    h3 {
+      display: -webkit-box;
+      font-size: 1.25em;
+      line-height: 1.25em;
+      height: 1.25em;
+      margin: 0;
+      margin-bottom: 10px;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
+
+    p {
+      position: relative;
+      line-height: 1.2em;
+      height: 12em;
+      text-align: left;
+      margin: 0;
+      overflow: hidden;
+    }
+    p:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 1.2em;
+      background: linear-gradient(to right, rgba(236, 236, 236, 0), rgba(236, 236, 236, 1) 50%);
+    }
+  }
+}
