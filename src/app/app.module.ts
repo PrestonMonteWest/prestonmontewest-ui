@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { UrlEncode } from './url-encode.pipe';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { PostListComponent } from './post-list/post-list.component';
     HomeComponent,
     PostDetailComponent,
     PostListComponent,
+    UrlEncode,
   ],
   imports: [
     BrowserModule,
