@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --open",
     "build": "ng build --prod",
+    "deploy": "scp -i ~/.ssh/prestonmontewest-webserver.pem dist/ui/* ec2-user@prestonmontewest.com:/var/www/prestonmontewest",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
