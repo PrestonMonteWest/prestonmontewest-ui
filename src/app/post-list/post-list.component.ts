@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { PostService } from '../post.service';
 import { Post } from '../post';
@@ -12,11 +13,13 @@ import { Post } from '../post';
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postService.getPosts(9).subscribe((data: Post[]) => {
-      this.posts = data;
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.postService.getPosts(params['limit']).subscribe((data: Post[]) => {
+        this.posts = data;
+      });
     });
   }
 }

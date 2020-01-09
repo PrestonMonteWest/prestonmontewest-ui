@@ -18,10 +18,10 @@ export class PostService {
   }
 
   public getPosts(limit?: number): Observable<Post[]> {
-    const params = new HttpParams();
+    let options: { params?: HttpParams } = {};
     if (limit) {
-      params.set('limit', `${limit}`);
+      options.params = new HttpParams().set('limit', `${limit}`);
     }
-    return this.http.get<Post[]>(`${this.postUrl}`, { params })
+    return this.http.get<Post[]>(`${this.postUrl}`, options);
   }
 }

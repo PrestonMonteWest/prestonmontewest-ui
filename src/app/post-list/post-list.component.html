@@ -5,3 +5,7 @@
     <p>{{ post.content }}</p>
   </div>
 </div>
+
+<div *ngIf="posts.length === 0">
+  <p>No blog posts found!</p>
+</div>
