@@ -12,14 +12,17 @@ import { Post } from '../post';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
+  retrievedPosts: boolean = false;
 
   constructor(private postService: PostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.postService.getPosts(params['limit']).subscribe((data: Post[]) => {
-        this.posts = data;
-      });
+      this.postService.getPosts(params['limit']).subscribe(
+        (data: Post[]) => this.posts = data,
+        (error) => console.error(error),
+        () => this.retrievedPosts = true,
+      );
     });
   }
 }

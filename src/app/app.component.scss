@@ -37,16 +37,23 @@
         }
     }
 
+    $footer-height: 70px;
     main {
-        padding-bottom: 3rem;
+        padding-bottom: $footer-height;
     }
 
     footer {
         box-sizing: border-box;
-        padding-top: 1rem;
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 3rem;
+        height: $footer-height;
+
+        $border-size: 1px;
+        p {
+            margin: 0;
+            border-top: $border-size solid rgb(168, 168, 168);
+            line-height: ($footer-height - $border-size);
+        }
     }
 }
