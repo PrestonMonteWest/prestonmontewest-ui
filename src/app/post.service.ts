@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { forEach } from 'lodash';
 
 import { Post } from './post';
 
@@ -22,6 +23,21 @@ export class PostService {
     if (limit) {
       options.params = new HttpParams().set('limit', `${limit}`);
     }
-    return this.http.get<Post[]>(`${this.postUrl}`, options);
+    return new Observable<Post[]>((subscriber) => {
+      this.http.get<Post[]>(`${this.postUrl}`, options).subscribe(
+        (posts: Post[]) => {
+          forEach(posts, (post: Post) => {
+            post.publishDate = new Date(post.publishDate);
+            if (post.editDate) {
+              post.editDate = new Date(post.editDate);
+            }
+          });
+          subscriber.next(posts);
+        },
+        (error) => {
+          subscriber.error(error);
+        },
+      )
+    });
   }
 }

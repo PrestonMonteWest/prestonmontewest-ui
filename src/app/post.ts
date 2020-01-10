@@ -1,6 +1,6 @@
 export interface Post {
     title: string;
-    publishDate?: Date;
+    publishDate: Date;
     editDate?: Date;
     content: string;
 }
