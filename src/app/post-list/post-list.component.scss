@@ -1,58 +1,78 @@
 .post-list {
   .post-list-item {
-    text-align: left;
-    margin: 2em 0;
-    padding: 0 1.5em 1.5em 1.5em;
+    display: flex;
+    margin: 2rem 0;
+    padding: 0 1.5rem 1.5rem 1.5rem;
     border-bottom: 1px solid rgb(0, 0, 0, 0.4);
-    border-radius: 15px;
+    border-radius: 25px;
     transition: 0.3s;
 
-    h2 {
-      display: -webkit-box;
-      letter-spacing: -0.5px;
-      font-size: 1.25em;
-      line-height: 1.25em;
-      height: 1.25em;
-      margin: 0;
-      margin-bottom: 0.5em;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-    }
+    $heading-line-height: 1.5rem;
 
-    p {
-      color: rgb(0, 0, 0, 0.6);
-      margin: 0;
-      margin-top: 0.5em;
-    }
+    $summary-line-height: 1.2rem;
+    $number-of-lines: 3;
+    $summary-margin: 0.75rem;
+    $summary-total-height: $summary-line-height * $number-of-lines;
 
-    .summary {
-      position: relative;
-      line-height: 1.2em;
-      height: 3.6em;
+    $date-line-height: 1rem;
+
+    .content {
       text-align: left;
-      margin: 0;
-      overflow: hidden;
-    }
-    .summary::after {
-      content: "";
-      text-align: right;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 70%;
-      height: 1.2em;
-      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255, 1) 50%);
+
+      h2 {
+        display: -webkit-box;
+        letter-spacing: -0.5px;
+        font-size: $heading-line-height * 0.8;
+        margin: 0;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+
+      p {
+        color: rgb(0, 0, 0, 0.6);
+        margin: 0;
+      }
+
+      .summary {
+        position: relative;
+        margin: $summary-margin 0;
+        line-height: $summary-line-height;
+        height: $summary-total-height;
+        text-align: left;
+        overflow: hidden;
+      }
+      .summary::after {
+        content: "";
+        text-align: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70%;
+        height: 1.2rem;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          rgb(255, 255, 255, 1) 50%
+        );
+      }
+
+      .date {
+        font-size: $date-line-height * 0.8;
+        line-height: $date-line-height;
+      }
     }
 
-    .date {
-      font-size: 0.8em;
+    img {
+      height: $heading-line-height + $summary-total-height + $date-line-height
+        + ($summary-margin * 2);
     }
   }
 
   .post-list-item:hover {
-    padding: 0 1.5em 1em 1.5em;
-    margin: 2em 0 2.5em 0;
+    padding: 0 1.5rem 1rem 1.5rem;
+    margin: 2rem 0 2.5rem 0;
     border-bottom: 1px solid rgb(0, 0, 0, 1);
+    border-radius: 15px;
   }
 }

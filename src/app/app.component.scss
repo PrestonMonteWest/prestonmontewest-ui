@@ -1,60 +1,60 @@
 .site {
-    margin: 0 auto;
-    width: 1120px;
-    position: relative;
-    min-height: 100vh;
+  margin: 0 auto;
+  width: 1120px;
+  position: relative;
+  min-height: 100vh;
 
-    header {
-        background-color: rgb(136, 136, 255);
-        text-align: center;
-        border-radius: 0 0 10px 10px;
+  header {
+    background-color: rgb(136, 136, 255);
+    text-align: center;
+    border-radius: 0 0 10px 10px;
 
-        h1 {
-            margin: 0;
-            padding: 0.75em 0;
-            font-family: 'Courier New', Courier, monospace;
-            color: white;
-        }
-
-        nav > ul {
-            display: flex;
-            border-radius: 0 0 10px 10px;
-            background-color: rgb(100, 100, 255);
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-
-            .nav-item {
-                display: block;
-                padding: 0.75em 1em;
-                text-decoration: none;
-                color: white;
-                transition: 0.3s;
-            }
-            .nav-item:hover {
-                background-color: rgb(130, 130, 255);
-            }
-        }
+    h1 {
+      margin: 0;
+      padding: 0.75em 0;
+      font-family: "Courier New", Courier, monospace;
+      color: white;
     }
 
-    $footer-height: 70px;
-    main {
-        padding-bottom: $footer-height;
-    }
+    nav > ul {
+      display: flex;
+      border-radius: 0 0 10px 10px;
+      background-color: rgb(100, 100, 255);
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
 
-    footer {
-        box-sizing: border-box;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: $footer-height;
-
-        $border-size: 1px;
-        p {
-            margin: 0;
-            border-top: $border-size solid rgb(0, 0, 0, 0.3);
-            line-height: ($footer-height - $border-size);
-        }
+      .nav-item {
+        display: block;
+        padding: 0.75em 1em;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s;
+      }
+      .nav-item:hover {
+        background-color: rgb(130, 130, 255);
+      }
     }
+  }
+
+  $footer-height: 70px;
+  main {
+    padding-bottom: $footer-height;
+  }
+
+  footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+
+    $border-size: 1px;
+    p {
+      margin: 0;
+      border-top: $border-size solid rgb(0, 0, 0, 0.3);
+      line-height: ($footer-height - $border-size);
+    }
+  }
 }
