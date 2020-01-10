@@ -1,28 +1,28 @@
 <div class="site">
-  <div class="wrapper">
-    <header>
-      <h1>{{ title }}</h1>
-      <nav>
-        <ul>
-          <li>
-            <a class="nav-item" routerLink="/home">
-              <i class="fas fa-home"></i> Home
-            </a>
-          </li>
-          <li>
-            <a class="nav-item" routerLink="/post">
-              <i class="fas fa-pencil-alt"></i> Blog
-            </a>
-          </li>
-          <li>
-            <a class="nav-item" routerLink="/projects">
-              <i class="fas fa-code"></i> Projects
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  <header>
+    <h1>{{ title }}</h1>
+    <nav>
+      <ul>
+        <li>
+          <a class="nav-item" routerLink="/home">
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" routerLink="/post">
+            <i class="fas fa-pencil-alt"></i> Blog
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" routerLink="/projects">
+            <i class="fas fa-code"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
     <router-outlet></router-outlet>
-  </div>
+  </main>
   <footer><span class="copyright">&copy; {{ year }} {{ title }}</span></footer>
 </div>

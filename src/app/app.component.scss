@@ -1,49 +1,52 @@
 .site {
     margin: 0 auto;
     width: 1120px;
-    height: 100%;
+    position: relative;
+    min-height: 100vh;
 
-    .wrapper {
-        min-height: 100%;
-        margin-bottom: -50px;
+    header {
+        background-color: #88f;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
 
-        header {
-            background-color: #88f;
-            text-align: center;
+        h1 {
+            margin: 0;
+            padding: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+
+        nav > ul {
+            display: flex;
             border-radius: 0 0 10px 10px;
+            background-color: #66f;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
 
-            h1 {
-                margin: 0;
-                padding: 20px 0;
-                font-family: 'Courier New', Courier, monospace;
+            .nav-item {
+                display: block;
+                padding: 10px 20px;
+                text-decoration: none;
                 color: white;
             }
-
-            nav > ul {
-                display: flex;
-                border-radius: 10px;
-                background-color: #66f;
-                justify-content: center;
-                margin: 0;
-                padding: 0;
-                list-style-type: none;
-
-                .nav-item {
-                    display: block;
-                    padding: 10px 20px;
-                    text-decoration: none;
-                    color: white;
-                }
-                .nav-item:hover {
-                    background-color: #99f;
-                }
+            .nav-item:hover {
+                background-color: #99f;
             }
         }
     }
 
+    main {
+        padding-bottom: 3rem;
+    }
+
     footer {
-        height: 35px;
-        text-align: center;
-        padding-top: 15px;
+        box-sizing: border-box;
+        padding-top: 1rem;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
     }
 }
