@@ -1,9 +1,10 @@
 .post-list {
   .post-list-item {
     display: flex;
-    margin: 2rem 0;
-    padding: 0 1.5rem 1.5rem 1.5rem;
-    border-bottom: 1px solid rgb(0, 0, 0, 0.4);
+    margin: 30px 0;
+    padding: 25px;
+    border-left: 1px solid rgb(0, 0, 0, 0.4);
+    border-right: 1px solid rgb(0, 0, 0, 0.4);
     border-radius: 20px;
     transition: 0.3s;
 
@@ -64,15 +65,16 @@
     }
 
     img {
+      margin-left: 20px;
       height: $heading-line-height + $summary-total-height + $date-line-height
         + ($summary-margin * 2);
     }
   }
 
   .post-list-item:hover {
-    padding: 0 1.5rem 1rem 1.5rem;
-    margin: 2rem 0 2.5rem 0;
-    border-bottom: 1px solid rgb(0, 0, 0, 0.8);
+    padding: 25px 30px 25px 20px;
+    border-left: 1px solid rgb(0, 0, 0, 0.8);
+    border-right: 1px solid rgb(0, 0, 0, 0.8);
     border-radius: 10px;
   }
 }
