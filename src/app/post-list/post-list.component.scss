@@ -1,80 +1,62 @@
 .post-list {
   .post-list-item {
     display: flex;
+    justify-content: space-between;
     margin: 30px 0;
     padding: 25px;
-    border-left: 1px solid rgb(0, 0, 0, 0.4);
-    border-right: 1px solid rgb(0, 0, 0, 0.4);
+    background-color: transparent;
+    border-left: 1px solid rgb(0, 0, 0, 0.25);
+    border-right: 1px solid rgb(0, 0, 0, 0.25);
     border-radius: 20px;
     transition: 0.3s;
 
-    $heading-line-height: 1.5rem;
-
-    $summary-line-height: 1.2rem;
-    $number-of-lines: 3;
-    $summary-margin: 0.75rem;
-    $summary-total-height: $summary-line-height * $number-of-lines;
-
-    $date-line-height: 1rem;
-
     .content {
-      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
 
       h2 {
         display: -webkit-box;
-        letter-spacing: -0.5px;
-        font-size: $heading-line-height * 0.8;
-        margin: 0;
-        overflow: hidden;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        font-size: 1.4rem;
+        letter-spacing: -0.5px;
+        margin: 0;
       }
 
       p {
         color: rgb(0, 0, 0, 0.6);
-        margin: 0;
       }
 
       .summary {
-        position: relative;
-        margin: $summary-margin 0;
-        line-height: $summary-line-height;
-        height: $summary-total-height;
-        text-align: left;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         overflow: hidden;
-      }
-      .summary::after {
-        content: "";
-        text-align: right;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 70%;
-        height: 1.2rem;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0),
-          rgb(255, 255, 255, 1) 50%
-        );
+        margin: 15px 0;
       }
 
       .date {
-        font-size: $date-line-height * 0.8;
-        line-height: $date-line-height;
+        font-size: 0.8rem;
+        margin: 0;
       }
     }
 
-    img {
+    .img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      flex-basis: 20%;
       margin-left: 20px;
-      height: $heading-line-height + $summary-total-height + $date-line-height
-        + ($summary-margin * 2);
+      border-radius: 5px;
     }
   }
 
   .post-list-item:hover {
-    padding: 25px 30px 25px 20px;
-    border-left: 1px solid rgb(0, 0, 0, 0.8);
-    border-right: 1px solid rgb(0, 0, 0, 0.8);
+    background-color: rgb(0, 0, 0, 0.05);
+    border-left: 1px solid rgb(0, 0, 0, 1);
+    border-right: 1px solid rgb(0, 0, 0, 1);
     border-radius: 10px;
   }
 }

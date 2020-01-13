@@ -1,6 +1,6 @@
 <div class="site">
   <header>
-    <h1>&lt;/{{ title }}&gt;</h1>
+    <h1>&lt;{{ title | urlEncode }}&gt;</h1>
     <nav>
       <ul>
         <li>
@@ -25,6 +25,10 @@
     <router-outlet></router-outlet>
   </main>
   <footer>
-    <p><span class="copyright">&copy; {{ year }} {{ title }}</span></p>
+    <p>
+      <span class="copyright">
+        &copy; {{ year }} &lt;/{{ title | urlEncode }}&gt;
+      </span>
+    </p>
   </footer>
 </div>

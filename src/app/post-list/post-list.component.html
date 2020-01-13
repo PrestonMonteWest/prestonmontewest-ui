@@ -1,14 +1,17 @@
 <div class="post-list" *ngIf="posts.length > 0">
-  <div class="post-list-item" *ngFor="let post of posts"
-    routerLink="/post/{{ post.title | urlEncode }}">
+  <div
+    class="post-list-item"
+    *ngFor="let post of posts"
+    routerLink="/post/{{ post.title | urlEncode }}"
+  >
     <div class="content">
       <h2>{{ post.title }}</h2>
-      <p class="summary">{{ post.content }}</p>
+      <p class="summary">{{ post.summary }}</p>
       <p class="date">
         <i class="far fa-calendar-alt"></i> {{ post.publishDate | date }}
       </p>
     </div>
-    <img *ngIf="post.image" [src]="post.image">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + post.image + ')'}">
   </div>
 </div>
 
