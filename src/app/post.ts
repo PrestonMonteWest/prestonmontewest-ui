@@ -1,7 +1,8 @@
 export interface Post {
   title: string;
-  image?: string;
+  summary: string;
   publishDate: Date;
   editDate?: Date;
+  image: string;
   content: string;
 }
