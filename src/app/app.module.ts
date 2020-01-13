@@ -9,7 +9,6 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { UrlEncode } from './url-encode.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,4 +25,4 @@ import { UrlEncode } from './url-encode.pipe';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 
-
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -15,8 +14,8 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService,
-  ) { }
+    private postService: PostService
+  ) {}
 
   ngOnInit(): void {
     this.getPost();
@@ -24,11 +23,9 @@ export class PostDetailComponent implements OnInit {
 
   getPost(): void {
     const title: string = this.route.snapshot.paramMap.get('title');
-    this.postService.getPostByTitle(title).subscribe((post: Post) => {
-      this.post = post;
-    },
-    (err) => {
-      console.error(err);
-    });
+    this.postService.getPostByTitle(title).subscribe(
+      (post: Post) => this.post = post,
+      (err: any) => console.error(err),
+    );
   }
 }

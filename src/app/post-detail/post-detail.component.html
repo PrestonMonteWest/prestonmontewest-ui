@@ -1,4 +1,5 @@
 <div *ngIf="post">
   <h2>{{ post.title }}</h2>
-  <p>{{ post.content }}</p>
+  <p class="summary">{{ post.summary }}</p>
+  <div [innerHTML]="post.content"></div>
 </div>

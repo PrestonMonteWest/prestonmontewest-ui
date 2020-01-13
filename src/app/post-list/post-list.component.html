@@ -11,7 +11,10 @@
         <i class="far fa-calendar-alt"></i> {{ post.publishDate | date }}
       </p>
     </div>
-    <div class="img" [ngStyle]="{'background-image': 'url(' + post.image + ')'}">
+    <div
+      class="img"
+      [ngStyle]="{'background-image': 'url(' + post.image + ')'}"
+    ></div>
   </div>
 </div>
 
