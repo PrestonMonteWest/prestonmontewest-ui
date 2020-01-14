@@ -22,11 +22,11 @@
 
   .content {
     text-align: left;
+    font-size: 1.15rem;
     margin: 0 0 30px 0;
 
     p {
-      font-size: 1.15rem;
-      margin: 0 0 30px 0;
+      margin: inherit;
     }
     p:last-child {
       margin: 0;
