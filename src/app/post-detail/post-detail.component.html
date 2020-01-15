@@ -1,6 +1,6 @@
 <div class="post-detail" *ngIf="post">
   <h2 class="title">{{ post.title }}</h2>
   <p class="summary">{{ post.summary }}</p>
-  <img class="cover-image" src="{{ post.image }}">
+  <img class="cover-image" [src]="post.image">
   <div class="content" [innerHTML]="post.content"></div>
 </div>
