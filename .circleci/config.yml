@@ -9,7 +9,6 @@ jobs:
       - run:
           name: Install Packages
           command: npm i
-          environment:
       - run:
           name: Build Production Angular
           command: npm run build
@@ -26,6 +25,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "89:72:06:ee:03:0c:35:72:62:22:03:d7:11:5e:1f:0e"
+      - run:
+          name: Add Host To Known Hosts
+          command: ssh-keyscan -H prestonmontewest.com >> ~/.ssh/known_hosts
       - run:
           name: Deploy Static Files
           command: scp dist/ui/* ec2-user@prestonmontewest.com:/var/www/prestonmontewest
