@@ -7,10 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Production Packages
+          name: Install Packages
           command: npm i
           environment:
-            NODE_ENV: production
       - run:
           name: Build Production Angular
           command: npm run build
