@@ -14,7 +14,7 @@ jobs:
       - persist_to_workspace:
           root: dist
           paths:
-            - ui
+            - prestonmontewest
   deploy:
     docker:
       - image: circleci/buildpack-deps:zesty
@@ -29,7 +29,7 @@ jobs:
           command: ssh-keyscan -H prestonmontewest.com >> ~/.ssh/known_hosts
       - run:
           name: Deploy Static Files
-          command: scp dist/ui/* ec2-user@prestonmontewest.com:/var/www/prestonmontewest
+          command: scp -r dist/prestonmontewest ec2-user@prestonmontewest.com:/var/www
 workflows:
   version: 2
   build-deploy:
