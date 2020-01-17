@@ -23,7 +23,7 @@ jobs:
     steps:
       - attach_workspace:
           at: dist
-      - add_ssh_key:
+      - add_ssh_keys:
           fingerprints:
             - "89:72:06:ee:03:0c:35:72:62:22:03:d7:11:5e:1f:0e"
       - run:
