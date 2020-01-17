@@ -1,23 +1,23 @@
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-  two:
+  deploy:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A more familiar hi"
+      - run: echo "A second hello"
 
 workflows:
   version: 2
-  one_and_two:
+  build-deploy:
     jobs:
-      - one
-      - two:
+      - build
+      - deploy:
           requires:
             - one
