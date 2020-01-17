@@ -1,36 +1,35 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:10
     steps:
       - checkout
-      - run: echo "A first hello"
-      - run: pwd
-      - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
+      - run:
+          name: Install Production Packages
+          command: npm i
+          environment:
+            NODE_ENV: production
+      - run:
+          name: Build Production Angular
+          command: npm run build
       - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory
-          root: my_workspace
-          # Must be relative path from root
+          root: dist
           paths:
-            - echo-output
+            - ui
   deploy:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: ubuntu:18.04
     steps:
-      - checkout
-      - run: echo "A second hello"
       - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: my_workspace
-
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+          at: dist
+      - add_ssh_key:
+          fingerprints:
+            - "89:72:06:ee:03:0c:35:72:62:22:03:d7:11:5e:1f:0e"
+      - run:
+          name: Deploy Static Files
+          command: scp dist/ui/* ec2-user@prestonmontewest.com:/var/www/prestonmontewest
 
 workflows:
   version: 2
