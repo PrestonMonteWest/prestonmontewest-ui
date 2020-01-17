@@ -19,7 +19,7 @@ jobs:
             - ui
   deploy:
     docker:
-      - image: ubuntu:18.04
+      - image: circleci/buildpack-deps:zesty
     steps:
       - attach_workspace:
           at: dist
