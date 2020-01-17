@@ -1,5 +1,4 @@
 version: 2
-
 jobs:
   build:
     docker:
@@ -31,7 +30,6 @@ jobs:
       - run:
           name: Deploy Static Files
           command: scp dist/ui/* ec2-user@prestonmontewest.com:/var/www/prestonmontewest
-
 workflows:
   version: 2
   build-deploy:
