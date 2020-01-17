@@ -20,4 +20,4 @@ workflows:
       - build
       - deploy:
           requires:
-            - one
+            - build
