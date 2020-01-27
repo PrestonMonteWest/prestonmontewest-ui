@@ -14,7 +14,11 @@ export class AppComponent implements OnInit {
   year = new Date().getFullYear();
   route: string;
 
-  constructor(public auth: AuthService, private router: Router, private location: Location) {}
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((value) => {

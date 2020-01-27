@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PostService } from '../post.service';
 import { Post } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.scss'],
+  selector: 'post-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PostDetailComponent implements OnInit {

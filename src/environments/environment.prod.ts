@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  auth0: {
+    domain: 'prestonmontewest.auth0.com'
+  }
 };

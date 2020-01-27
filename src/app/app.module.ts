@@ -5,22 +5,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { UrlEncode } from './url-encode.pipe';
+import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PostDetailComponent,
-    PostListComponent,
-    UrlEncode,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    PostModule
   ],
   providers: [],
   bootstrap: [AppComponent]

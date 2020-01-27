@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,8 @@ export class AuthService {
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
-      domain: "prestonmontewest-dev.auth0.com",
-      client_id: "OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC",
+      domain: environment.auth0.domain,
+      client_id: 'OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC',
       redirect_uri: `${window.location.origin}`
     })
   ) as Observable<Auth0Client>).pipe(
@@ -112,13 +114,13 @@ export class AuthService {
     }
   }
 
-  logout() {
+  logout(returnToPath: string = '/') {
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
       client.logout({
-        client_id: "OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC",
-        returnTo: `${window.location.origin}`
+        client_id: 'OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC',
+        returnTo: `${window.location.origin}${returnToPath}`
       });
     });
   }
