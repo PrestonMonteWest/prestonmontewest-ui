@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { PostModule } from './post/post.module';
 
@@ -13,12 +14,12 @@ import { PostModule } from './post/post.module';
     HomeComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
+    BrowserModule,
     AppRoutingModule,
     PostModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ Title ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {}
