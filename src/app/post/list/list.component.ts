@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { Post } from '../post';
 import { PostService } from '../post.service';
 
 @Component({
-  selector: 'post-list',
+  selector: 'app-post-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
@@ -15,7 +16,9 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit() {
@@ -25,6 +28,11 @@ export class PostListComponent implements OnInit {
         (err: any) => console.error(err),
         () => this.retrievedPosts = true,
       );
+    });
+
+    this.title.setTitle("Preston's Blog");
+    this.meta.updateTag({
+      name: 'description', content: "A list of Preston's most recent posts."
     });
   }
 }
