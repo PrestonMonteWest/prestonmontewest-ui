@@ -12,24 +12,20 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
   // Create an observable of Auth0 instance of client
-  auth0Client$ = (from(
-    createAuth0Client({
-      domain: environment.auth0.domain,
-      client_id: environment.auth0.clientId,
-      redirect_uri: `${window.location.origin}`
-    })
-  ) as Observable<Auth0Client>).pipe(
-    shareReplay(1), // Every subscription receives the same shared value
-    catchError(err => throwError(err))
-  );
+  auth0Client = createAuth0Client({
+    domain: environment.auth0.domain,
+    client_id: environment.auth0.clientId,
+    redirect_uri: `${window.location.origin}`
+  });
   // Define observables for SDK methods that return promises by default
   // For each Auth0 SDK method, first ensure the client instance is ready
   // concatMap: Using the client instance, call SDK method; SDK returns a promise
   // from: Convert that resulting promise into an observable
-  isAuthenticated$ = this.auth0Client$.pipe(
-    concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap(res => this.loggedIn = res)
-  );
+  get isAuthenticated(): Promise<boolean> {
+    return this.auth0Client.then((client: Auth0Client) => {
+      return client.isAuthenticated();
+    })
+  }
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
