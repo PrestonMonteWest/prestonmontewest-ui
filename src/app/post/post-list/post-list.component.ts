@@ -7,8 +7,8 @@ import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
