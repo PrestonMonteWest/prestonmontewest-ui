@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
-import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 
@@ -11,21 +9,12 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  // Create an observable of Auth0 instance of client
   auth0Client = createAuth0Client({
     domain: environment.auth0.domain,
     client_id: environment.auth0.clientId,
     redirect_uri: `${window.location.origin}`
   });
-  // Define observables for SDK methods that return promises by default
-  // For each Auth0 SDK method, first ensure the client instance is ready
-  // concatMap: Using the client instance, call SDK method; SDK returns a promise
-  // from: Convert that resulting promise into an observable
-  get isAuthenticated(): Promise<boolean> {
-    return this.auth0Client.then((client: Auth0Client) => {
-      return client.isAuthenticated();
-    })
-  }
+
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
@@ -33,53 +22,15 @@ export class AuthService {
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
-  loggedIn: boolean = null;
+  loggedIn: boolean = false;
 
   constructor(private router: Router) {
-    // On initial load, check authentication state with authorization server
-    // Set up local auth streams if user is already authenticated
-    this.localAuthSetup();
-    // Handle redirect from Auth0 login
-    this.handleAuthCallback();
-  }
-
-  // When calling, options can be passed if desired
-  // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
-  getUser$(options?): Observable<any> {
-    return this.auth0Client$.pipe(
-      concatMap((client: Auth0Client) => from(client.getUser(options))),
-      tap(user => this.userProfileSubject$.next(user))
-    );
-  }
-
-  private localAuthSetup() {
-    // This should only be called on app initialization
-    // Set up local authentication streams
-    const checkAuth$ = this.isAuthenticated$.pipe(
-      concatMap((loggedIn: boolean) => {
-        if (loggedIn) {
-          // If authenticated, get user and set in app
-          // NOTE: you could pass options here if needed
-          return this.getUser$();
-        }
-        // If not authenticated, return stream that emits 'false'
-        return of(loggedIn);
-      })
-    );
-    checkAuth$.subscribe();
-  }
-
-  login(redirectPath: string = '/') {
-    // A desired redirect path can be passed to login method
-    // (e.g., from a route guard)
-    // Ensure Auth0 client instance exists
-    this.auth0Client$.subscribe((client: Auth0Client) => {
-      // Call method to log in
-      client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}`,
-        appState: { target: redirectPath }
+    this.auth0Client
+      .then((client: Auth0Client) => client.isAuthenticated())
+      .then((isAuthenticated: boolean) => {
+        this.loggedIn = isAuthenticated;
       });
-    });
+    this.handleAuthCallback();
   }
 
   private handleAuthCallback() {
@@ -108,6 +59,19 @@ export class AuthService {
         this.router.navigate([targetRoute]);
       });
     }
+  }
+
+  login(redirectPath: string = '/') {
+    // A desired redirect path can be passed to login method
+    // (e.g., from a route guard)
+    // Ensure Auth0 client instance exists
+    this.auth0Client$.subscribe((client: Auth0Client) => {
+      // Call method to log in
+      client.loginWithRedirect({
+        redirect_uri: `${window.location.origin}`,
+        appState: { target: redirectPath }
+      });
+    });
   }
 
   logout(returnToPath: string = '/') {
