@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
-import { from, Observable } from 'rxjs';
+import { from, Observable, of, combineLatest } from 'rxjs';
 import { tap, concatMap, shareReplay } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
@@ -27,13 +27,14 @@ export class AuthService {
   // from: Convert that resulting promise into an observable
   isAuthenticated$: Observable<boolean> = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap((isAuthed) => this.loggedIn = isAuthed)
+    tap((isAuthenticated) => this.loggedIn = isAuthenticated)
   );
   handleRedirectCallback$: Observable<RedirectLoginResult> = this.auth0Client$
     .pipe(
       concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
     );
   loggedIn: boolean = false;
+  userProfile: any = undefined;
 
   constructor(private router: Router) {
     // On initial load, check authentication state with authorization server
@@ -47,17 +48,17 @@ export class AuthService {
     // Call when app reloads after user logs in with Auth0
     const params = window.location.search;
     if (params.includes('code=') && params.includes('state=')) {
-      let targetRoute: string; // Path to redirect to after login processsed
+      let targetRoute: string = '/'; // Path to redirect to after login processsed
       const authComplete$ = this.handleRedirectCallback$.pipe(
         tap((cbRes: RedirectLoginResult) => {
-          // Get and set target redirect route from callback results
+          // Get and set target redirect route from callback result
           if (cbRes.appState && cbRes.appState.target) {
             targetRoute = cbRes.appState.target;
-          } else {
-            targetRoute = '/';
           }
         }),
-        concatMap(() => this.isAuthenticated$)
+        concatMap(() => {
+          return combineLatest([ this.isAuthenticated$, this.getUser$() ]);
+        })
       );
       // Subscribe to authentication completion observable
       authComplete$.subscribe(() => {
@@ -71,8 +72,14 @@ export class AuthService {
   // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
   getUser$(options?: GetUserOptions): Observable<any> {
     return this.auth0Client$.pipe(
-      concatMap((client: Auth0Client) => from(client.getUser(options)))
+      concatMap((client: Auth0Client) => from(client.getUser(options))),
+      tap((user) => this.userProfile = user)
     );
+  }
+
+  get isAdmin(): boolean {
+    const adminEmail: string = 'prestonmontewest@gmail.com';
+    return this.userProfile && this.userProfile.email === adminEmail;
   }
 
   login(redirectPath: string = '/'): void {
