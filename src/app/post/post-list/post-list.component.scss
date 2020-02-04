@@ -5,7 +5,7 @@ $margin: 40px;
   display: flex;
   margin: $margin 0;
 
-  input {
+  app-search {
     flex-grow: 1;
   }
 }
@@ -33,7 +33,7 @@ $margin: 40px;
       }
 
       p {
-        color: rgb(0, 0, 0, 0.6);
+        color: $light-font-color;
       }
 
       .summary {

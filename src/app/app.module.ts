@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { PostModule } from './post/post.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,12 @@ import { PostModule } from './post/post.module';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    PostModule
+    SharedModule
   ],
-  providers: [ Title, Meta ],
+  providers: [
+    Title,
+    Meta
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
