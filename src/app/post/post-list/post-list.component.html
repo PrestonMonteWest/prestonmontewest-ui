@@ -1,3 +1,8 @@
+<div class="toolbar">
+  <button *ngIf="auth.isAdmin">Create Post</button>
+  <input class="search">
+</div>
+
 <div class="post-list" *ngIf="posts.length > 0">
   <div
     class="post-list-item"

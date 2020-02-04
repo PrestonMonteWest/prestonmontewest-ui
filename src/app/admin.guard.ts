@@ -3,7 +3,8 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  UrlTree
 } from '@angular/router';
 
 import { AuthService } from './auth.service';
@@ -17,12 +18,11 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
+  ): boolean | UrlTree {
     if (this.auth.isAdmin) {
       return true;
     } else if (this.auth.loggedIn) {
-      this.router.navigate(['home']);
-      return false;
+      return this.router.parseUrl('/home');
     }
 
     this.auth.login(window.location.pathname);

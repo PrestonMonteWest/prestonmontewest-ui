@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +19,7 @@ import { PostModule } from './post/post.module';
     AppRoutingModule,
     PostModule
   ],
-  providers: [ Title ],
+  providers: [ Title, Meta ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

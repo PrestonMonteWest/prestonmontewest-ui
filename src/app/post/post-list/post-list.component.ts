@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { Post } from '../post';
-import { PostService } from '../post.service';
+import { AuthService } from 'src/app/auth.service';
+import { Post } from 'src/app/post/post';
+import { PostService } from 'src/app/post/post.service';
 
 @Component({
   selector: 'app-post-list',
@@ -17,6 +18,7 @@ export class PostListComponent implements OnInit {
   constructor(
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
+    private auth: AuthService,
     private title: Title,
     private meta: Meta
   ) {}

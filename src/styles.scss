@@ -1,10 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'src/variables.scss';
+
 html, body {
-  color: rgb(0, 0, 0, 0.8);
+  color: $font-color;
+  background-color: $background-color;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   margin: 0;
   height: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid $border-color;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.search {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  padding: 5px;
+  font: inherit;
+  outline: none;
 }

@@ -1,3 +1,5 @@
+@import 'src/variables.scss';
+
 .site {
   margin: 0 auto;
   width: 1120px;
@@ -11,7 +13,7 @@
 
     h1 {
       margin: 0;
-      padding: 0.75em 0;
+      padding: 25px 0;
       letter-spacing: -1.5px;
       font-family: "Lucida Console", Monaco, monospace;
       font-weight: lighter;
@@ -36,8 +38,8 @@
           color: white;
         }
         .nav-item:hover {
-          padding-bottom: 6px;
-          border-bottom: 4px solid rgb(255, 255, 255);
+          padding-bottom: 8px;
+          border-bottom: 2px solid rgb(255, 255, 255);
         }
         .nav-item.active-link {
           background-color: rgb(136, 136, 255);
@@ -46,8 +48,8 @@
     }
   }
 
-  $footer-height: 70px;
   main {
+    padding: 0 $content-padding-sides;
     padding-bottom: $footer-height;
   }
 
@@ -61,7 +63,7 @@
     $border-size: 1px;
     p {
       margin: 0;
-      border-top: $border-size solid rgb(0, 0, 0, 0.3);
+      border-top: $border-size solid $border-color;
       line-height: ($footer-height - $border-size);
     }
   }

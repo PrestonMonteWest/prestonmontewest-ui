@@ -5,7 +5,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, Observable, of, combineLatest } from 'rxjs';
 import { tap, concatMap, shareReplay } from 'rxjs/operators';
 
-import { environment } from '../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +39,11 @@ export class AuthService {
   constructor(private router: Router) {
     // On initial load, check authentication state with authorization server
     // Set up local auth streams if user is already authenticated
-    this.isAuthenticated$.subscribe();
+    this.isAuthenticated$.subscribe((isAuthenticated: boolean) => {
+      if (isAuthenticated) {
+        this.getUser$().subscribe();
+      }
+    });
     // Handle redirect from Auth0 login
     this.handleAuthCallback();
   }
