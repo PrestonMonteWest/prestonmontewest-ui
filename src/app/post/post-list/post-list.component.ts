@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private title: Title,
     private meta: Meta,
-    auth: AuthService
+    public auth: AuthService
   ) {}
 
   ngOnInit() {
