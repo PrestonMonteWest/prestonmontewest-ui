@@ -6,3 +6,8 @@ export interface Post {
   image: string;
   content: string;
 }
+
+export interface PostFilter {
+  title?: string;
+  limit?: number;
+}

@@ -17,9 +17,10 @@ a {
 }
 
 button {
+  box-sizing: border-box;
   background-color: rgb(255, 255, 255);
   border: 1px solid $border-color;
-  padding: 10px 15px;
+  padding: 5px 10px;
   border-radius: 5px;
   font: inherit;
   cursor: pointer;

@@ -1,6 +1,6 @@
 <div class="toolbar">
   <button *ngIf="auth.isAdmin">Create Post</button>
-  <app-search></app-search>
+  <app-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></app-search>
 </div>
 
 <div class="post-list" *ngIf="posts.length > 0">

@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { forEach } from 'lodash';
 import { Observable } from 'rxjs';
 
-import { Post } from './post';
+import { Post, PostFilter } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,13 @@ export class PostService {
     return this.http.get<Post>(`${this.postUrl}${title}`);
   }
 
-  public getPosts(limit?: number): Observable<Post[]> {
-    let options: { params?: HttpParams } = {};
-    if (limit) {
-      options.params = new HttpParams().set('limit', `${limit}`);
+  public getPosts(filter: PostFilter): Observable<Post[]> {
+    const options = { params: new HttpParams() };
+    if (filter.title) {
+      options.params = options.params.set('title', `${filter.title}`);
+    }
+    if (filter.limit) {
+      options.params = options.params.set('limit', `${filter.limit}`);
     }
     return new Observable<Post[]>((subscriber) => {
       this.http.get<Post[]>(`${this.postUrl}`, options).subscribe(

@@ -4,8 +4,14 @@ $margin: 40px;
 .toolbar {
   display: flex;
   margin: $margin 0;
+  height: 35px;
+
+  button {
+    height: 100%;
+  }
 
   app-search {
+    height: 100%;
     flex-grow: 1;
   }
 }

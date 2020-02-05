@@ -3,7 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
-import { Post } from 'src/app/post/post';
+import { Post, PostFilter } from 'src/app/post/post';
 import { PostService } from 'src/app/post/post.service';
 
 @Component({
@@ -25,8 +25,12 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.postService.getPosts(params['limit']).subscribe(
-        (posts: Post[]) => (this.posts = posts),
+      const filter: PostFilter = {
+        title: params['title'],
+        limit: params['limit']
+      };
+      this.postService.getPosts(filter).subscribe(
+        (posts: Post[]) => this.posts = posts,
         (err: any) => console.error(err),
         () => this.retrievedPosts = true,
       );
@@ -34,7 +38,16 @@ export class PostListComponent implements OnInit {
 
     this.title.setTitle("Preston's Blog");
     this.meta.updateTag({
-      name: 'description', content: "A list of Preston's most recent posts."
+      name: 'description',
+      content: "A list of Preston's most recent posts."
     });
+  }
+
+  handleSearch(searchText: string) {
+    const filter: PostFilter = { title: searchText };
+    this.postService.getPosts(filter).subscribe(
+      (posts: Post[]) => this.posts = posts,
+      (err: any) => console.error(err)
+    );
   }
 }
