@@ -18,9 +18,9 @@ export class PostListComponent implements OnInit {
   constructor(
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
-    private auth: AuthService,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    auth: AuthService
   ) {}
 
   ngOnInit() {
