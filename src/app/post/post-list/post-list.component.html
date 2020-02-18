@@ -1,5 +1,5 @@
 <div class="toolbar">
-  <button *ngIf="auth.isAdmin">Create Post</button>
+  <button *ngIf="auth.isAdmin" routerLink="/post/create">Create Post</button>
   <app-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></app-search>
 </div>
 

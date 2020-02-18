@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { forEach } from 'lodash';
+import { map as lodashMap } from 'lodash';
 import { Observable } from 'rxjs';
 
 import { Post, PostFilter } from './post';
+import { map as rxjsMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  public postUrl = 'api/post/';
+  postApiUrl = '/api/post/';
 
   constructor(private http: HttpClient) {}
 
-  public getPostByTitle(title: string): Observable<Post> {
-    return this.http.get<Post>(`${this.postUrl}${title}`);
+  getPostByTitle(title: string): Observable<Post> {
+    return this.http.get<Post>(`${this.postApiUrl}${title}`);
   }
 
-  public getPosts(filter: PostFilter): Observable<Post[]> {
+  getPosts(filter: PostFilter): Observable<Post[]> {
     const options = { params: new HttpParams() };
     if (filter.title) {
       options.params = options.params.set('title', `${filter.title}`);
@@ -25,21 +26,18 @@ export class PostService {
     if (filter.limit) {
       options.params = options.params.set('limit', `${filter.limit}`);
     }
-    return new Observable<Post[]>((subscriber) => {
-      this.http.get<Post[]>(`${this.postUrl}`, options).subscribe(
-        (posts: Post[]) => {
-          forEach(posts, (post: Post) => {
-            post.publishDate = new Date(post.publishDate);
-            if (post.editDate) {
-              post.editDate = new Date(post.editDate);
-            }
-          });
-          subscriber.next(posts);
-        },
-        (error) => {
-          subscriber.error(error);
-        },
-      )
-    });
+    return this.http.get<Post[]>(`${this.postApiUrl}`, options).pipe(
+      rxjsMap((posts: Post[]) => lodashMap(posts, (post: Post) => {
+          post.publishDate = new Date(post.publishDate as unknown as string);
+          if (post.editDate) {
+            post.editDate = new Date(post.editDate as unknown as string);
+          }
+          return post;
+        }))
+    );
+  }
+
+  createPost(post: Post): Observable<Post> {
+    return this.http.put<Post>(`${this.postApiUrl}`, post);
   }
 }

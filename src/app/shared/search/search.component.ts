@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  // TODO: add search icon
   private lastSearchText = '';
   searchText: string = '';
   @Input() placeholder: string = '';
@@ -13,9 +14,9 @@ export class SearchComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onKey() {
+  onKey(): void {
     if (this.searchText !== this.lastSearchText) {
       this.search.emit(this.searchText);
       this.lastSearchText = this.searchText;

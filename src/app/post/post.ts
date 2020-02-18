@@ -1,10 +1,12 @@
-export interface Post {
-  title: string;
-  summary: string;
-  publishDate: Date;
-  editDate?: Date;
-  image: string;
-  content: string;
+export class Post {
+  constructor(
+    public title: string,
+    public summary: string,
+    public content: string,
+    public image: string,
+    public publishDate?: Date,
+    public editDate?: Date
+  ) {}
 }
 
 export interface PostFilter {

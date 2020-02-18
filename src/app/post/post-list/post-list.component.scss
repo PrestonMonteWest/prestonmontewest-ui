@@ -6,12 +6,15 @@ $margin: 40px;
   margin: $margin 0;
   height: 35px;
 
-  button {
+  * {
     height: 100%;
   }
 
+  button {
+    margin-right: 10px;
+  }
+
   app-search {
-    height: 100%;
     flex-grow: 1;
   }
 }
