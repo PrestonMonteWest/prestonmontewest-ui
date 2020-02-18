@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  // TODO: add search icon
   private lastSearchText = '';
   searchText: string = '';
   @Input() placeholder: string = '';
