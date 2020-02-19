@@ -4,11 +4,6 @@ $margin: 40px;
 .toolbar {
   display: flex;
   margin: $margin 0;
-  height: 35px;
-
-  * {
-    height: 100%;
-  }
 
   button {
     margin-right: 10px;

@@ -2,15 +2,16 @@
 @import 'src/variables.scss';
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 html, body {
   color: $font-color;
   background-color: $background-color;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
   -webkit-font-smoothing: antialiased;
   margin: 0;
   height: 100%;
@@ -21,11 +22,13 @@ a {
 }
 
 button {
+  height: $font-size;
+  padding: $padding;
   background-color: rgb(255, 255, 255);
-  border: 1px solid $border-color;
-  padding: 5px 10px;
+  border: $border-size solid $border-color;
   border-radius: 5px;
   font: inherit;
+  color: $font-color;
   cursor: pointer;
   outline: none;
 }
