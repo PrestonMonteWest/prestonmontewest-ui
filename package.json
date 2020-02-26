@@ -1,10 +1,10 @@
 {
   "name": "ui",
-  "version": "0.22.2",
+  "version": "0.22.3",
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --open",
+    "start": "ng serve --proxy-config proxy.conf.json --open --port 4000",
     "build": "ng build --prod",
     "predeploy": "npm run build",
     "deploy": "scp -r dist/prestonmontewest ec2-user@prestonmontewest.com:/var/www",
