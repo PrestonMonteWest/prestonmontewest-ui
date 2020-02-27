@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class HomeComponent implements OnInit {
   constructor(private title: Title, private meta: Meta) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.title.setTitle(environment.title);
     this.meta.updateTag({
       name: 'description',

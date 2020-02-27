@@ -11,7 +11,6 @@ import { UrlEncode } from 'src/app/shared/url-encode.pipe';
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-  // TODO: make sure image exists
   model: Post = new Post('', '', '', '');
   errors: string[] = [];
   constructor(

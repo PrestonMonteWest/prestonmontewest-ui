@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit {
     public auth: AuthService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       const filter: PostFilter = {
         title: params['title'],
@@ -43,7 +43,7 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  handleSearch(searchText: string) {
+  handleSearch(searchText: string): void {
     const filter: PostFilter = { title: searchText };
     this.postService.getPosts(filter).subscribe(
       (posts: Post[]) => this.posts = posts,

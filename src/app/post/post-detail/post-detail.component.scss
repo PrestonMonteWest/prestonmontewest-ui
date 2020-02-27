@@ -1,10 +1,12 @@
+@import 'src/variables.scss';
+
 .post-detail {
   width: 80%;
   margin: 0 auto;
 
   .title {
     font-size: 2.25rem;
-    font-weight: lighter;
+    font-weight: $light-font-weight;
     font-family: "Times New Roman", Times, serif;
     margin: 40px 0 0 0;
   }

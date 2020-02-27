@@ -1,1 +1,32 @@
-// TODO: style create post page
+@import 'src/variables.scss';
+
+h2 {
+  font-size: 2rem;
+  font-weight: $light-font-weight;
+}
+
+form {
+  .form-group {
+    margin: 20px 0;
+
+    label {
+      display: block;
+      padding-bottom: 5px;
+      color: $light-font-color;
+      text-align: left;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: $padding;
+      border: $border-size solid $light-border-color;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+  }
+}
