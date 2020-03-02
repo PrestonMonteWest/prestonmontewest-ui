@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'src/variables.scss';
 
+* {
+  outline: 0;
+}
+
 html, body {
   height: 100%;
   margin: 0;
