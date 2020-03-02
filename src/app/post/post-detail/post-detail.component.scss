@@ -1,37 +1,48 @@
 @import 'src/variables.scss';
 
 .post-detail {
-  width: 80%;
-  margin: 0 auto;
-
   .title {
     font-size: 2.25rem;
     font-weight: $light-font-weight;
     font-family: "Times New Roman", Times, serif;
-    margin: 40px 0 0 0;
+    margin: 0;
+    margin-top: 40px;
   }
 
   .summary {
     font-size: 1.25rem;
     color: rgb(0, 0, 0, 0.6);
-    margin: 10px 0 60px 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 60px;
   }
 
   .cover-image {
-    width: 100%;
-    margin: 0 0 60px 0;
+    max-height: 500px;
+    margin-bottom: 60px;
   }
 
   .content {
     text-align: left;
     font-size: 1.15rem;
-    margin: 0 0 30px 0;
+    margin-bottom: 40px;
 
-    p {
-      margin: inherit;
+    h1, h2, h3, h4, h5, h6 {
+      margin: 30px 0;
+      text-align: center;
+      font-weight: $light-font-weight;
     }
-    p:last-child {
-      margin: 0;
+
+    p, ul, ol {
+      margin: 20px 0;
+    }
+
+    *:first-child {
+      margin-top: 0;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
     }
   }
 }
