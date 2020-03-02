@@ -1,0 +1,19 @@
+@import 'src/variables.scss';
+
+h2 {
+  margin: 40px 0;
+  font-size: 2rem;
+}
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+
+  img {
+    // Flex basis was not working
+    display: inline-block;
+    width: 20%;
+  }
+}
