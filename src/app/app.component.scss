@@ -6,44 +6,45 @@
   position: relative;
   min-height: 100vh;
 
-  header {
+  h1 {
+    padding: 25px 0;
+    margin: 0;
     background-color: rgb(136, 136, 255);
+    color: rgb(255, 255, 255);
+    letter-spacing: -1.5px;
     text-align: center;
-    border-radius: 0 0 10px 10px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: lighter;
+  }
 
-    h1 {
+  nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    text-align: center;
+
+    ul {
+      display: flex;
+      border-radius: 0 0 10px 10px;
+      background-color: rgb(100, 100, 255);
+      justify-content: center;
       margin: 0;
-      padding: 25px 0;
-      letter-spacing: -1.5px;
-      font-family: "Lucida Console", Monaco, monospace;
-      font-weight: lighter;
-      color: rgb(255, 255, 255);
-    }
+      padding: 0;
+      list-style-type: none;
 
-    nav {
-      ul {
-        display: flex;
-        border-radius: 0 0 10px 10px;
-        background-color: rgb(100, 100, 255);
-        justify-content: center;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-
-        .nav-item {
-          display: block;
-          position: relative;
-          padding: 10px 15px;
-          text-decoration: none;
-          color: rgb(255, 255, 255);
-        }
-        .nav-item:hover {
-          padding-bottom: 8px;
-          border-bottom: 2px solid rgb(255, 255, 255);
-        }
-        .nav-item.active-link {
-          background-color: rgb(136, 136, 255);
-        }
+      .nav-item {
+        display: block;
+        position: relative;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+      }
+      .nav-item:hover {
+        padding-bottom: 7px;
+        border-bottom: 3px solid $background-color;
+      }
+      .nav-item.active-link {
+        background-color: rgb(136, 136, 255);
       }
     }
   }

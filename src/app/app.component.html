@@ -1,36 +1,34 @@
 <div class="site">
-  <header>
-    <h1>&lt;{{ title | urlEncode }}&gt;</h1>
-    <nav>
-      <ul>
-        <li>
-          <a class="nav-item" routerLink="/home" routerLinkActive="active-link">
-            <i class="fas fa-home"></i> Home
-          </a>
-        </li>
-        <li>
-          <a class="nav-item" routerLink="/post" routerLinkActive="active-link">
-            <i class="fas fa-pencil-alt"></i> Blog
-          </a>
-        </li>
-        <li>
-          <a class="nav-item" routerLink="/project" routerLinkActive="active-link">
-            <i class="fas fa-code"></i> Projects
-          </a>
-        </li>
-        <li>
-          <a *ngIf="!auth.loggedIn" class="nav-item" (click)="auth.login(route)">
-            <i class="fas fa-sign-in-alt"></i> Log In
-          </a>
-        </li>
-        <li>
-          <a *ngIf="auth.loggedIn" class="nav-item" (click)="auth.logout()">
-            <i class="fas fa-sign-out-alt"></i> Logout
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <h1>&lt;{{ title | urlEncode }}&gt;</h1>
+  <nav>
+    <ul>
+      <li>
+        <a class="nav-item" routerLink="/home" routerLinkActive="active-link">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" routerLink="/post" routerLinkActive="active-link">
+          <i class="fas fa-pencil-alt"></i> Blog
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" routerLink="/project" routerLinkActive="active-link">
+          <i class="fas fa-code"></i> Projects
+        </a>
+      </li>
+      <li>
+        <a *ngIf="!auth.loggedIn" class="nav-item" (click)="auth.login(route)">
+          <i class="fas fa-sign-in-alt"></i> Log In
+        </a>
+      </li>
+      <li>
+        <a *ngIf="auth.loggedIn" class="nav-item" (click)="auth.logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </nav>
   <main>
     <router-outlet></router-outlet>
   </main>

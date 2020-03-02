@@ -6,6 +6,8 @@
 }
 
 html, body {
+  height: 100%;
+  margin: 0;
   color: $font-color;
   background-color: $background-color;
   text-align: center;
@@ -13,8 +15,6 @@ html, body {
   font-size: $font-size;
   font-weight: $font-weight;
   -webkit-font-smoothing: antialiased;
-  margin: 0;
-  height: 100%;
 }
 
 a {
