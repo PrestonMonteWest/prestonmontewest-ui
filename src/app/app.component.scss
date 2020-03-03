@@ -1,10 +1,12 @@
 @import 'src/variables.scss';
 
 .site {
-  margin: 0 auto;
-  width: 1120px;
+  // For footer
   position: relative;
+
+  width: 1120px;
   min-height: 100vh;
+  margin: 0 auto;
 
   h1 {
     padding: 25px 0;

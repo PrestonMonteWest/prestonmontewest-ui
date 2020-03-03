@@ -2,6 +2,7 @@
 @import 'src/variables.scss';
 
 * {
+  box-sizing: content-box;
   outline: 0;
 }
 
@@ -31,8 +32,8 @@ button {
   background-color: rgb(255, 255, 255);
   border: $border-size solid $border-color;
   border-radius: 5px;
-  font: inherit;
+  font-family: $font-family;
+  font-size: $font-size;
   color: $font-color;
   cursor: pointer;
-  outline: none;
 }
