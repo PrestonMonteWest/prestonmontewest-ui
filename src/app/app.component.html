@@ -8,11 +8,6 @@
         </a>
       </li>
       <li>
-        <a class="nav-item" routerLink="/project" routerLinkActive="active-link">
-          <i class="fas fa-code"></i> Projects
-        </a>
-      </li>
-      <li>
         <a *ngIf="!auth.loggedIn" class="nav-item" (click)="auth.login(route)">
           <i class="fas fa-sign-in-alt"></i> Log In
         </a>
