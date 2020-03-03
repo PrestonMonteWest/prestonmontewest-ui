@@ -9,9 +9,9 @@
 html, body {
   height: 100%;
   margin: 0;
-  color: $font-color;
   background-color: $background-color;
   text-align: center;
+  color: $font-color;
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
@@ -32,8 +32,17 @@ button {
   background-color: rgb(255, 255, 255);
   border: $border-size solid $border-color;
   border-radius: 5px;
+  color: $font-color;
   font-family: $font-family;
   font-size: $font-size;
-  color: $font-color;
   cursor: pointer;
+}
+
+input {
+  padding: $padding;
+  border: $border-size solid $light-border-color;
+  border-radius: 5px;
+  color: $font-color;
+  font-family: $font-family;
+  font-size: $font-size;
 }

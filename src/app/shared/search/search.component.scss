@@ -7,26 +7,22 @@
   input {
     flex-grow: 1;
     height: $font-size;
-    padding: $padding;
     padding-right: 0;
-    font: inherit;
-    color: inherit;
-    outline: none;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: $border-size solid $border-color;
     border-right: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   i {
     padding: $padding;
-    color: $border-color;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: $border-size solid $border-color;
     border-left: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    color: $border-color;
     cursor: pointer;
   }
 }

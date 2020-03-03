@@ -12,17 +12,13 @@ form {
     label {
       display: block;
       padding-bottom: 5px;
-      color: $light-font-color;
       text-align: left;
+      color: $light-font-color;
     }
 
     input {
-      box-sizing: border-box;
       width: 100%;
-      padding: $padding;
-      border: $border-size solid $light-border-color;
-      border-radius: 5px;
-      outline: none;
+      box-sizing: border-box;
     }
 
     button {

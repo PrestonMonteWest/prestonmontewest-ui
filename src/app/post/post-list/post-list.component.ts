@@ -36,10 +36,10 @@ export class PostListComponent implements OnInit {
       );
     });
 
-    this.title.setTitle("Preston's Blog");
+    this.title.setTitle("Preston Monte West");
     this.meta.updateTag({
       name: 'description',
-      content: "A list of Preston's most recent posts."
+      content: "A blog by Preston Monte West."
     });
   }
 
