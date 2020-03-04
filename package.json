@@ -3,7 +3,6 @@
   "version": "0.26.4",
   "private": true,
   "scripts": {
-    "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --open --port 4000",
     "build": "ng build --prod",
     "predeploy": "npm run build",
@@ -18,6 +17,7 @@
     "@angular/compiler": "~8.2.13",
     "@angular/core": "~8.2.13",
     "@angular/forms": "~8.2.13",
+    "@angular/localize": "^9.0.4",
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
