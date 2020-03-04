@@ -19,13 +19,15 @@ $margin: 40px;
   justify-content: space-between;
 
   .post-list {
-    flex-basis: 80%;
-    margin-right: $margin;
+    //flex-basis: 80%;
+    flex-basis: 100%;
+    //margin-right: $margin;
 
     .post-list-item {
       display: flex;
       justify-content: space-between;
       margin: $margin 0;
+      text-align: left;
       cursor: pointer;
 
       .content {
