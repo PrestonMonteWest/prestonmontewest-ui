@@ -4,5 +4,8 @@ export const environment = {
   auth0: {
     domain: 'prestonmontewest.auth0.com',
     clientId: 'DGmvKjonF5KH4yWSZb6uh7xRKJWmVHY9'
+  },
+  disqus: {
+    shortname: 'prestonmontewest'
   }
 };
