@@ -13,6 +13,7 @@ import { PostService } from '../post.service';
 })
 export class PostDetailComponent implements OnInit {
   post: Post;
+  pageId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class PostDetailComponent implements OnInit {
     this.postService.getPostByTitle(title).subscribe(
       (post: Post) => {
         this.post = post;
+        this.pageId = post.title;
         this.title.setTitle(post.title);
         this.meta.updateTag({
           name: 'description', content: this.post.summary

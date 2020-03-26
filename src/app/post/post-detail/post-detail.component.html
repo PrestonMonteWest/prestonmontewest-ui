@@ -3,4 +3,5 @@
   <p class="summary">{{ post.summary }}</p>
   <img class="cover-image" [src]="post.image">
   <div class="content" [innerHTML]="post.content"></div>
+  <disqus [identifier]="pageId"></disqus>
 </div>
