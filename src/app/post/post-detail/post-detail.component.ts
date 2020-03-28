@@ -9,7 +9,7 @@ import { PostService } from '../post.service';
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class PostDetailComponent implements OnInit {
   post: Post;

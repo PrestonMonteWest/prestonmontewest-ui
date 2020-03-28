@@ -1,17 +1,20 @@
 @import 'src/variables.scss';
 
-h2 {
-  font-size: 2rem;
-  font-weight: $light-font-weight;
-}
-
 form {
+  margin: 50px 0;
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2rem;
+    font-weight: $light-font-weight;
+  }
+
   .form-group {
     margin: 20px 0;
 
     label {
       display: block;
-      padding-bottom: 5px;
+      margin-bottom: 5px;
       text-align: left;
       color: $light-font-color;
     }

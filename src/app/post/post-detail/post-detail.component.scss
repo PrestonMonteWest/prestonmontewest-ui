@@ -13,7 +13,6 @@
   .summary {
     font-size: 1.25rem;
     color: rgb(0, 0, 0, 0.6);
-    margin: 0;
     margin-top: 10px;
     margin-bottom: 50px;
   }
@@ -24,8 +23,10 @@
   }
 
   .content {
+    width: 70%;
     text-align: left;
     font-size: 1.15rem;
+    margin: 0 auto;
     margin-bottom: 50px;
 
     h1, h2, h3, h4, h5, h6 {
