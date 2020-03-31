@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Post } from '../post';
+import { PostCreate, PostDisplay } from '../post';
 import { PostService } from '../post.service';
 import { UrlEncode } from 'src/app/shared/url-encode.pipe';
 
@@ -11,8 +11,13 @@ import { UrlEncode } from 'src/app/shared/url-encode.pipe';
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-  model: Post = new Post('', '', '', '');
-  errors: string[] = [];
+  model: PostCreate = {
+    title: '',
+    summary: '',
+    image: null,
+    content: ''
+  };
+  error: string = '';
   constructor(
     private postService: PostService,
     private router: Router,
@@ -21,19 +26,37 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onImageChange(imageControl: HTMLInputElement) {
+    this.error = '';
+    const image: File = imageControl.files[0];
+    if (image.type.split('/')[0] !== 'image') {
+      imageControl.value = null;
+      const errMessage: string = 'File type must be an image';
+      console.error(errMessage);
+      this.error = errMessage;
+    }
+
+    this.model.image = image;
+  }
+
   createPost(): void {
-    this.errors = [];
-    this.postService.createPost(this.model).subscribe(
-      (post: Post) => {
+    this.error = '';
+    const formData = new FormData();
+    formData.append('title', this.model.title);
+    formData.append('summary', this.model.summary);
+    formData.append('image', this.model.image);
+    formData.append('content', this.model.content);
+    this.postService.createPost(formData).subscribe(
+      (post: PostDisplay) => {
         const title = this.urlEncode.transform(post.title);
         this.router.navigate([`/post/${title}`])
       },
       (err) => {
         console.error(err);
         if ('message' in err) {
-          this.errors.push(err.message as string);
+          this.error = err.message;
         } else {
-          this.errors.push('Internal error');
+          this.error = 'Internal error';
         }
       }
     );

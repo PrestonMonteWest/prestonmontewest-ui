@@ -1,6 +1,8 @@
 <form>
   <h2 class="form-group">Create Post</h2>
 
+  <p *ngIf="error" class="error">{{ error }}</p>
+
   <div class="form-group">
     <label for="title">Title</label>
     <input
@@ -28,11 +30,12 @@
   <div class="form-group">
     <label for="image">Image</label>
     <input
-      type="text"
+      #imageControl
+      type="file"
       class="form-control"
       id="image"
       required
-      [(ngModel)]="model.image"
+      (change)="onImageChange(imageControl)"
       name="image"
     >
   </div>

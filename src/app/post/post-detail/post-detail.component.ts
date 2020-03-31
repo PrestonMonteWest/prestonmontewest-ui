@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { Post } from '../post';
+import { PostDisplay } from '../post';
 import { PostService } from '../post.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PostService } from '../post.service';
   encapsulation: ViewEncapsulation.None
 })
 export class PostDetailComponent implements OnInit {
-  post: Post;
+  post: PostDisplay;
   pageId: string;
 
   constructor(
@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
   getPost(): void {
     const title: string = this.route.snapshot.paramMap.get('title');
     this.postService.getPostByTitle(title).subscribe(
-      (post: Post) => {
+      (post: PostDisplay) => {
         this.post = post;
         this.pageId = post.title;
         this.title.setTitle(post.title);

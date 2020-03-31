@@ -3,7 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
-import { Post, PostFilter } from 'src/app/post/post';
+import { PostDisplay, PostFilter } from 'src/app/post/post';
 import { PostService } from 'src/app/post/post.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PostService } from 'src/app/post/post.service';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
+  posts: PostDisplay[] = [];
   retrievedPosts: boolean = false;
 
   constructor(
@@ -30,7 +30,7 @@ export class PostListComponent implements OnInit {
         limit: params['limit']
       };
       this.postService.getPosts(filter).subscribe(
-        (posts: Post[]) => this.posts = posts,
+        (posts: PostDisplay[]) => this.posts = posts,
         (err: any) => console.error(err),
         () => this.retrievedPosts = true,
       );
@@ -46,7 +46,7 @@ export class PostListComponent implements OnInit {
   handleSearch(searchText: string): void {
     const filter: PostFilter = { title: searchText };
     this.postService.getPosts(filter).subscribe(
-      (posts: Post[]) => this.posts = posts,
+      (posts: PostDisplay[]) => this.posts = posts,
       (err: any) => console.error(err)
     );
   }

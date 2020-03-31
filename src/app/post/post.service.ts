@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map as lodashMap } from 'lodash';
 import { Observable } from 'rxjs';
 
-import { Post, PostFilter } from './post';
+import { PostDisplay, PostCreate, PostFilter } from './post';
 import { map as rxjsMap } from 'rxjs/operators';
 
 @Injectable({
@@ -14,11 +14,11 @@ export class PostService {
 
   constructor(private http: HttpClient) {}
 
-  getPostByTitle(title: string): Observable<Post> {
-    return this.http.get<Post>(`${this.postApiUrl}${title}`);
+  getPostByTitle(title: string): Observable<PostDisplay> {
+    return this.http.get<PostDisplay>(`${this.postApiUrl}${title}`);
   }
 
-  getPosts(filter: PostFilter): Observable<Post[]> {
+  getPosts(filter: PostFilter): Observable<PostDisplay[]> {
     const options = { params: new HttpParams() };
     if (filter.title) {
       options.params = options.params.set('title', `${filter.title}`);
@@ -26,8 +26,8 @@ export class PostService {
     if (filter.limit) {
       options.params = options.params.set('limit', `${filter.limit}`);
     }
-    return this.http.get<Post[]>(`${this.postApiUrl}`, options).pipe(
-      rxjsMap((posts: Post[]) => lodashMap(posts, (post: Post) => {
+    return this.http.get<PostDisplay[]>(`${this.postApiUrl}`, options).pipe(
+      rxjsMap((posts: PostDisplay[]) => lodashMap(posts, (post: PostDisplay) => {
           post.publishDate = new Date(post.publishDate as unknown as string);
           if (post.editDate) {
             post.editDate = new Date(post.editDate as unknown as string);
@@ -37,7 +37,7 @@ export class PostService {
     );
   }
 
-  createPost(post: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.postApiUrl}`, post);
+  createPost(formData: FormData): Observable<PostDisplay> {
+    return this.http.post<PostDisplay>(`${this.postApiUrl}`, formData);
   }
 }
