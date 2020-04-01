@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -8,17 +9,28 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class SearchComponent implements OnInit {
   private lastSearchText = '';
   searchText: string = '';
+  private timerSubscription: Subscription = null;
   @Input() placeholder: string = '';
+  @Input() delay: number = 300;
   @Output() search: EventEmitter<string> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onKey(): void {
-    if (this.searchText !== this.lastSearchText) {
-      this.search.emit(this.searchText);
-      this.lastSearchText = this.searchText;
+  emitSearch(): void {
+    this.search.emit(this.searchText);
+  }
+
+  onKeyup(): void {
+    if (this.timerSubscription && !this.timerSubscription.closed) {
+      this.timerSubscription.unsubscribe();
     }
+    this.timerSubscription = timer(this.delay).subscribe(() => {
+      if (this.searchText !== this.lastSearchText) {
+        this.search.emit(this.searchText);
+        this.lastSearchText = this.searchText;
+      }
+    });
   }
 }
