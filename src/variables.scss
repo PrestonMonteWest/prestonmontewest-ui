@@ -7,6 +7,9 @@ $footer-height: 70px;
 $background-color: rgb(240, 240, 240);
 $default-background-color: $background-color;
 
+$s3-url: "https://prestonmontewest.s3.us-east-2.amazonaws.com";
+$vcr-osd-mono-url: "#{$s3-url}/fonts/vcr-osd-mono.woff";
+
 $font-size: 16px;
 $default-font-size: $font-size;
 $font-weight: 400;

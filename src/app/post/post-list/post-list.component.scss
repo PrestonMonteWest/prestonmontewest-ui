@@ -3,10 +3,9 @@
 .post-list-page {
   margin: 50px 0;
 
-  $margin: 40px;
   .toolbar {
     display: flex;
-    margin: $margin 0;
+    margin: 50px 0;
 
     button {
       margin-right: 10px;
@@ -17,6 +16,7 @@
     }
   }
 
+  $margin: 40px;
   .post-list-container {
     display: flex;
     justify-content: space-between;
@@ -84,12 +84,9 @@
       }
     }
 
-    .sidebar {
+    app-social {
       flex-grow: 1;
-      margin: 0;
-      padding: 20px 0;
-      background-color: rgb(255, 255, 255);
-      list-style-type: none;
+      margin-left: 20px;
     }
   }
 }

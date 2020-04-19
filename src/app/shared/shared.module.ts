@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { SearchComponent } from './search/search.component';
+import { SocialComponent } from './social/social.component';
 import { UrlEncode } from './url-encode.pipe';
 
 @NgModule({
   declarations: [
     SearchComponent,
+    SocialComponent,
     UrlEncode
   ],
   imports: [
@@ -16,6 +18,7 @@ import { UrlEncode } from './url-encode.pipe';
   ],
   exports: [
     SearchComponent,
+    SocialComponent,
     UrlEncode
   ]
 })

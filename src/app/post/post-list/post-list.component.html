@@ -4,8 +4,8 @@
     <app-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></app-search>
   </div>
 
-  <div class="post-list-container" *ngIf="posts.length > 0">
-    <div class="post-list">
+  <div class="post-list-container">
+    <div class="post-list" *ngIf="posts.length > 0">
       <a
         class="post-list-item"
         *ngFor="let post of posts"
@@ -24,9 +24,11 @@
         ></div>
       </a>
     </div>
-  </div>
 
-  <div *ngIf="posts.length === 0 && retrievedPosts">
-    <p>No blog posts found!</p>
+    <div class="post-list" *ngIf="posts.length === 0 && retrievedPosts">
+      <p>No blog posts found!</p>
+    </div>
+
+    <app-social></app-social>
   </div>
 </div>
