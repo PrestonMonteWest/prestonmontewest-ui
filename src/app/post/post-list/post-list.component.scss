@@ -19,10 +19,15 @@
   $margin: 40px;
   .post-list-container {
     display: flex;
-    justify-content: space-between;
+
+    @media screen and (max-width: $tablet-width) {
+      flex-wrap: wrap;
+    }
 
     .post-list {
-      flex-basis: 100%;
+      @media screen and (max-width: $tablet-width) {
+        flex-basis: 100%;
+      }
 
       .post-list-item {
         display: flex;
@@ -65,10 +70,8 @@
         }
 
         .image {
-          flex-basis: 20%;
+          flex: 0 0 $desktop-width * 0.15;
           margin-left: 20px;
-          border-radius: 5px;
-          border: $border-size solid $light-border-color;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -85,8 +88,11 @@
     }
 
     app-social {
-      flex-grow: 1;
       margin-left: 20px;
+
+      @media screen and (max-width: $tablet-width) {
+        margin: $margin 0;
+      }
     }
   }
 }

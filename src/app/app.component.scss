@@ -4,7 +4,10 @@
   // For footer
   position: relative;
 
-  width: 1120px;
+  @media only screen and (min-width: $desktop-width) {
+    width: $desktop-width;
+  }
+
   min-height: 100vh;
   margin: 0 auto;
 

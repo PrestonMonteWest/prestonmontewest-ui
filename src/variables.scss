@@ -28,3 +28,8 @@ $default-border-size: $border-size;
 $border-color: rgb(0, 0, 0, 0.4);
 $default-border-color: $border-color;
 $light-border-color: rgb(0, 0, 0, 0.2);
+
+// Responsive widths
+$desktop-width: 1120px;
+$tablet-width: $desktop-width * 0.75;
+$phone-width: $desktop-width * 0.5;
