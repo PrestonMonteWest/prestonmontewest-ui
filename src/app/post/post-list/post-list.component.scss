@@ -25,6 +25,8 @@
     }
 
     .post-list {
+      flex-grow: 1;
+
       @media screen and (max-width: $tablet-width) {
         flex-basis: 100%;
       }
