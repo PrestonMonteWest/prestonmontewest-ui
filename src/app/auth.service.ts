@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import createAuth0Client from '@auth0/auth0-spa-js';
+import createAuth0Client, {
+  RedirectLoginResult,
+  GetUserOptions
+} from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, Observable, of, combineLatest } from 'rxjs';
 import { tap, concatMap, shareReplay } from 'rxjs/operators';
