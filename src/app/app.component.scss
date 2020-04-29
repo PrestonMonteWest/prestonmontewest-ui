@@ -44,8 +44,9 @@
       background-color: rgb(100, 100, 255);
       justify-content: center;
       margin: 0;
-      padding: 0 $border-radius-size;
+      padding: 0;
       list-style-type: none;
+      overflow: hidden;
 
       .nav-item {
         display: block;

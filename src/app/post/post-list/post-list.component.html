@@ -5,6 +5,8 @@
   </div>
 
   <div class="post-list-container">
+    <app-social></app-social>
+
     <div class="post-list" *ngIf="posts.length > 0">
       <a
         class="post-list-item"
@@ -28,7 +30,5 @@
     <div class="post-list" *ngIf="posts.length === 0 && retrievedPosts">
       <p>No blog posts found!</p>
     </div>
-
-    <app-social></app-social>
   </div>
 </div>

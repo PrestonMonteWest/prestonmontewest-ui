@@ -24,6 +24,15 @@
       flex-wrap: wrap;
     }
 
+    app-social {
+      margin-right: 20px;
+
+      @media screen and (max-width: $tablet-width) {
+        margin: 0;
+        margin-bottom: $margin;
+      }
+    }
+
     .post-list {
       flex-grow: 1;
 
@@ -86,14 +95,6 @@
 
       .post-list-item:last-child {
         margin-bottom: 0;
-      }
-    }
-
-    app-social {
-      margin-left: 20px;
-
-      @media screen and (max-width: $tablet-width) {
-        margin: $margin 0;
       }
     }
   }
