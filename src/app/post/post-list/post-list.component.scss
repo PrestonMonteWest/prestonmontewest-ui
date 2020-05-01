@@ -1,45 +1,36 @@
 @import 'src/variables.scss';
 
+$margin: 40px;
 .post-list-page {
-  margin: 50px 0;
+  display: flex;
+  margin: $margin 0;
 
-  .toolbar {
-    display: flex;
-    margin: 50px 0;
+  @media screen and (max-width: $tablet-width) {
+    flex-direction: column;
+  }
 
-    button {
-      margin-right: 10px;
-    }
+  $margin-side: 20px;
+  app-social {
+    margin-right: $margin-side;
 
-    app-search {
-      flex-grow: 1;
+    @media screen and (max-width: $tablet-width) {
+      margin: 0;
+      margin-bottom: $margin;
     }
   }
 
-  $margin: 40px;
   .post-list-container {
-    display: flex;
+    flex-grow: 1;
 
-    @media screen and (max-width: $tablet-width) {
-      flex-wrap: wrap;
-    }
+    .toolbar {
+      margin-bottom: $margin;
 
-    app-social {
-      margin-right: 20px;
-
-      @media screen and (max-width: $tablet-width) {
-        margin: 0;
-        margin-bottom: $margin;
+      button {
+        margin-right: $margin-side;
       }
     }
 
     .post-list {
-      flex-grow: 1;
-
-      @media screen and (max-width: $tablet-width) {
-        flex-basis: 100%;
-      }
-
       .post-list-item {
         display: flex;
         justify-content: space-between;
@@ -82,7 +73,7 @@
 
         .image {
           flex: 0 0 $desktop-width * 0.15;
-          margin-left: 20px;
+          margin-left: $margin-side;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

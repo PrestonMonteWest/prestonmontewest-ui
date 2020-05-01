@@ -1,0 +1,22 @@
+@import 'src/variables.scss';
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: $tablet-width) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .patreon {
+    max-height: 2.25rem;
+    min-height: 2rem;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: $tablet-width) {
+      margin: 0;
+    }
+  }
+}
