@@ -35,13 +35,19 @@ h1, h2, h3, h4, h5, h6 {
 button {
   height: $font-size;
   padding: $padding;
-  background-color: rgb(255, 255, 255);
+  background-color: $bright;
   border: $border-size solid $border-color;
   border-radius: 5px;
   color: $font-color;
   font-family: $font-family;
   font-size: $font-size;
+  white-space: nowrap;
   cursor: pointer;
+}
+
+.create-button {
+  background-color: rgb(0, 150, 0);
+  color: $bright;
 }
 
 input {

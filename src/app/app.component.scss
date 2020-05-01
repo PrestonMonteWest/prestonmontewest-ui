@@ -15,7 +15,7 @@
     padding: 25px 0;
     margin: 0;
     background-color: rgb(136, 136, 255);
-    color: $bright-font-color;
+    color: $bright;
     text-align: center;
     white-space: nowrap;
     font-family: "VCR OSD Mono", Monaco, monospace;
@@ -54,7 +54,7 @@
         padding: 10px 15px;
         text-decoration: none;
         white-space: nowrap;
-        color: $bright-font-color;
+        color: $bright;
       }
 
       .nav-item:hover {
@@ -85,7 +85,7 @@
       line-height: ($footer-height - $border-size);
 
       .brand {
-        white-space: nowrap;
+        white-space: inherit;
         font-family: "VCR OSD Mono";
         font-weight: $light-font-weight;
       }

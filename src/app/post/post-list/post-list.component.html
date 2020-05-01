@@ -3,8 +3,10 @@
 
   <div class="post-list-container">
     <div class="toolbar">
-      <button *ngIf="auth.isAdmin" routerLink="/blog/create">Create Post</button>
       <app-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></app-search>
+      <button class="create-button" *ngIf="auth.isAdmin" routerLink="/blog/create">
+        <i class="fas fa-plus"></i> Create
+      </button>
     </div>
 
     <div class="post-list" *ngIf="posts.length > 0">

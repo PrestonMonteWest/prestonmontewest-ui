@@ -2,13 +2,12 @@
 
 .search-container {
   display: flex;
-  width: 100%;
 
   input {
     flex-grow: 1;
     height: $font-size;
     padding-right: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: $bright;
     border: $border-size solid $border-color;
     border-right: none;
     border-top-right-radius: 0;
@@ -17,7 +16,7 @@
 
   i {
     padding: $padding;
-    background-color: rgb(255, 255, 255);
+    background-color: $bright;
     border: $border-size solid $border-color;
     border-left: none;
     border-top-right-radius: 5px;

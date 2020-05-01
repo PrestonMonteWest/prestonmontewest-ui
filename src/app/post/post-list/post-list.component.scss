@@ -9,9 +9,9 @@ $margin: 40px;
     flex-direction: column;
   }
 
-  $margin-side: 20px;
+  $margin-small: 20px;
   app-social {
-    margin-right: $margin-side;
+    margin-right: $margin-small;
 
     @media screen and (max-width: $tablet-width) {
       margin: 0;
@@ -24,9 +24,10 @@ $margin: 40px;
 
     .toolbar {
       margin-bottom: $margin;
+      text-align: left;
 
-      button {
-        margin-right: $margin-side;
+      .create-button {
+        margin-top: $margin-small;
       }
     }
 
@@ -73,7 +74,7 @@ $margin: 40px;
 
         .image {
           flex: 0 0 $desktop-width * 0.15;
-          margin-left: $margin-side;
+          margin-left: $margin-small;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

@@ -65,7 +65,11 @@
   </div>
 
   <div class="form-group">
-    <button type="submit" (click)="createPost()">Create</button>
-    <button routerLink="/post">Cancel</button>
+    <button class="create-button" type="submit" (click)="createPost()">
+      <i class="fas fa-plus"></i> Create
+    </button>
+    <button routerLink="/post">
+      <i class="fas fa-arrow-left"></i> Cancel
+    </button>
   </div>
 </form>
