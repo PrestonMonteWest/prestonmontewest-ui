@@ -27,13 +27,41 @@ $margin: 40px;
   .content {
     max-width: $tablet-width;
     text-align: left;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     margin: 0 auto;
     margin-bottom: $margin;
 
-    h1, h2, h3, h4, h5, h6 {
-      margin: 30px 0;
+    $top-margin: 35px;
+    $top-font-size: 2rem;
+    h1 {
+      margin: $top-margin 0;
+      font-size: $top-font-size;
       text-align: center;
+    }
+
+    h2 {
+      margin: ($top-margin - 5px) 0;
+      font-size: $top-font-size - 0.2rem;
+    }
+
+    h3 {
+      margin: ($top-margin - 10px) 0;
+      font-size: $top-font-size - 0.4rem;
+    }
+
+    h4 {
+      margin: ($top-margin - 15px) 0;
+      font-size: $top-font-size - 0.6rem;
+    }
+
+    h5 {
+      margin: ($top-margin - 20px) 0;
+      font-size: $top-font-size - 0.8rem;
+    }
+
+    h6 {
+      margin: ($top-margin - 25px) 0;
+      font-size: $top-font-size - 1rem;
     }
 
     p, ul, ol {
