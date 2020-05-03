@@ -52,6 +52,7 @@ export class CreatePostComponent implements OnInit {
         this.router.navigate([`/post/${title}`])
       },
       (err) => {
+        err = err.error;
         console.error(err);
         if ('message' in err) {
           this.error = err.message;
