@@ -7,7 +7,8 @@ export const environment = {
   title: 'Preston Monte West Dev',
   auth0: {
     domain: 'prestonmontewest-dev.auth0.com',
-    clientId: 'OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC'
+    clientId: 'OH9Lt0jLeIB976nwpxs5Czh9Isyl10IC',
+    audience: 'http://localhost:3000'
   },
   disqus: {
     shortname: 'prestonmontewest'
