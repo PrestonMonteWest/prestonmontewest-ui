@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map as lodashMap } from 'lodash';
 import { Observable } from 'rxjs';
-
-import { PostDisplay, PostCreate, PostFilter } from './post';
 import { map as rxjsMap } from 'rxjs/operators';
+
+import { PostDisplay, PostFilter } from './post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  postApiUrl = '/api/post/';
+  postApiUrl = '/api/post';
 
   constructor(private http: HttpClient) {}
 
   getPostByTitle(title: string): Observable<PostDisplay> {
-    return this.http.get<PostDisplay>(`${this.postApiUrl}${title}`);
+    return this.http.get<PostDisplay>(`${this.postApiUrl}/${title}`);
   }
 
   getPosts(filter: PostFilter): Observable<PostDisplay[]> {

@@ -20,7 +20,8 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.method === 'POST') {
+    const apiUrl = req.url.startsWith('/api');
+    if (apiUrl && ['POST', 'PUT', 'DELETE'].includes(req.method)) {
       return this.auth.getTokenSilently$().pipe(
         mergeMap(token => {
           const tokenReq = req.clone({

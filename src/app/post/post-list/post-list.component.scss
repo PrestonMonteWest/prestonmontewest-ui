@@ -5,29 +5,21 @@ $margin: 40px;
   display: flex;
   margin: $margin 0;
 
-  @media screen and (max-width: $tablet-width) {
-    flex-direction: column;
-  }
-
-  $margin-small: 20px;
+  $margin-small: 25px;
   app-social {
     margin-right: $margin-small;
-
-    @media screen and (max-width: $tablet-width) {
-      margin: 0;
-      margin-bottom: $margin;
-    }
   }
 
   .post-list-container {
     flex-grow: 1;
 
+    $margin-tiny: 15px;
     .toolbar {
       margin-bottom: $margin;
       text-align: left;
 
       .create-button {
-        margin-top: $margin-small;
+        margin-top: $margin-tiny;
       }
     }
 
@@ -63,7 +55,7 @@ $margin: 40px;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
             overflow: hidden;
-            margin: 15px 0;
+            margin: $margin-tiny 0;
           }
 
           .date {
@@ -88,6 +80,25 @@ $margin: 40px;
       .post-list-item:last-child {
         margin-bottom: 0;
       }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  .post-list-page {
+    flex-direction: column;
+
+    app-social {
+      margin: 0;
+      margin-bottom: $margin;
+    }
+  }
+}
+
+@media screen and (max-width: $phone-width) {
+  .post-list-page {
+    app-social {
+      display: none;
     }
   }
 }
