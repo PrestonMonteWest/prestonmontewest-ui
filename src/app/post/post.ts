@@ -12,6 +12,7 @@ export interface PostDisplay extends BasePost {
   image: string;
   publishDate: Date;
   editDate?: Date;
+  viewCount: number;
 }
 
 export interface PostFilter {

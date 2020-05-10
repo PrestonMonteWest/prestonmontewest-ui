@@ -26,18 +26,25 @@ export class PostService {
     if (filter.limit) {
       options.params = options.params.set('limit', `${filter.limit}`);
     }
-    return this.http.get<PostDisplay[]>(`${this.postApiUrl}`, options).pipe(
+    return this.http.get<PostDisplay[]>(this.postApiUrl, options).pipe(
       rxjsMap((posts: PostDisplay[]) => lodashMap(posts, (post: PostDisplay) => {
-          post.publishDate = new Date(post.publishDate as unknown as string);
-          if (post.editDate) {
-            post.editDate = new Date(post.editDate as unknown as string);
-          }
-          return post;
-        }))
+        post.publishDate = new Date(post.publishDate as unknown as string);
+        if (post.editDate) {
+          post.editDate = new Date(post.editDate as unknown as string);
+        }
+        return post;
+      }))
     );
   }
 
   createPost(formData: FormData): Observable<PostDisplay> {
-    return this.http.post<PostDisplay>(`${this.postApiUrl}`, formData);
+    return this.http.post<PostDisplay>(this.postApiUrl, formData);
+  }
+
+  incrementViewCount(postTitle: string): Observable<Partial<PostDisplay>> {
+    return this.http.patch<Partial<PostDisplay>>(
+      `${this.postApiUrl}/${postTitle}/view-count/increment`,
+      null
+    );
   }
 }

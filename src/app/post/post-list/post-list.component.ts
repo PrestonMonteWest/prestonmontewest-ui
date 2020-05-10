@@ -24,30 +24,34 @@ export class PostListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      const filter: PostFilter = {
-        title: params['title'],
-        limit: params['limit']
-      };
-      this.postService.getPosts(filter).subscribe(
-        (posts: PostDisplay[]) => this.posts = posts,
-        (err: any) => console.error(err),
-        () => this.retrievedPosts = true,
-      );
-    });
-
     this.title.setTitle("Preston Monte West");
     this.meta.updateTag({
       name: 'description',
       content: "A blog by Preston Monte West."
     });
+
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const filter: PostFilter = {
+        title: params['title'],
+        limit: params['limit']
+      };
+      this.getPosts(filter);
+    });
   }
 
   handleSearch(searchText: string): void {
     const filter: PostFilter = { title: searchText };
+    this.getPosts(filter);
+  }
+
+  private getPosts(filter: PostFilter): void {
     this.postService.getPosts(filter).subscribe(
       (posts: PostDisplay[]) => this.posts = posts,
-      (err: any) => console.error(err)
+      (err: any) => {
+        console.error(err);
+        this.retrievedPosts = true;
+      },
+      () => this.retrievedPosts = true
     );
   }
 }

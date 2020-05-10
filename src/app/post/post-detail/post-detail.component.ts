@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { PostDisplay } from '../post';
-import { PostService } from '../post.service';
+import { PostDisplay } from 'src/app/post/post';
+import { PostService } from 'src/app/post/post.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -17,6 +17,7 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private postService: PostService,
     private title: Title,
     private meta: Meta
@@ -35,9 +36,16 @@ export class PostDetailComponent implements OnInit {
         this.title.setTitle(post.title);
         this.meta.updateTag({
           name: 'description', content: this.post.summary
-        })
+        });
+        this.postService.incrementViewCount(title).subscribe(
+          null,
+          (err: any) => console.log(err)
+        );
       },
-      (err: any) => console.error(err),
+      (err: any) => {
+        console.error(err);
+        this.router.navigate(['not-found']);
+      }
     );
   }
 }

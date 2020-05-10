@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 import { DISQUS_SHORTNAME } from 'ngx-disqus';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from 'src/app/app.component';
+import { NotFoundComponent } from 'src/app/not-found/not-found.component';
 
-import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [
+    AppComponent,
+    NotFoundComponent
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,
