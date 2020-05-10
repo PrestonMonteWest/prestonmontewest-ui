@@ -5,7 +5,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
 
-import { AdminGuard } from 'src/app/admin.guard';
+import { AdminGuard } from '../admin.guard';
 
 const routes: Routes = [
   { path: '', component: PostListComponent },

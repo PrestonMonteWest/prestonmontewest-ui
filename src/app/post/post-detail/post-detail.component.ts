@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PostDisplay } from 'src/app/post/post';
-import { PostService } from 'src/app/post/post.service';
+import { PostDisplay } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-detail',

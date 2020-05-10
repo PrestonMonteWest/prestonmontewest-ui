@@ -12,4 +12,4 @@ import { ProjectComponent } from './project.component';
     ProjectRoutingModule
   ]
 })
-export class ProjectModule { }
+export class ProjectModule {}

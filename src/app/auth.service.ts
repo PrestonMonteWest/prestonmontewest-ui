@@ -9,7 +9,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, Observable, combineLatest } from 'rxjs';
 import { tap, concatMap, shareReplay } from 'rxjs/operators';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'

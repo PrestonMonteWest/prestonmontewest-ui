@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
-import { PostDisplay, PostFilter } from 'src/app/post/post';
-import { PostService } from 'src/app/post/post.service';
+import { AuthService } from '../../auth.service';
+import { PostDisplay, PostFilter } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-list',

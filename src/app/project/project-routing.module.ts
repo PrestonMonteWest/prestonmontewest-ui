@@ -9,4 +9,4 @@ const routes: Routes = [{ path: '', component: ProjectComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProjectRoutingModule { }
+export class ProjectRoutingModule {}

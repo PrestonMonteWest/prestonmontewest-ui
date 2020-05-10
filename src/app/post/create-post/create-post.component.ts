@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { PostCreate, PostDisplay } from '../post';
 import { PostService } from '../post.service';
-import { UrlEncode } from 'src/app/shared/url-encode.pipe';
+import { UrlEncode } from '../../shared/url-encode.pipe';
 
 @Component({
   selector: 'app-create-post',

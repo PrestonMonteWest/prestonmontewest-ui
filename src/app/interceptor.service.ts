@@ -8,7 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
 
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'

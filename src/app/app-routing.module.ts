@@ -2,8 +2,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { InterceptorService } from 'src/app/interceptor.service';
-import { NotFoundComponent } from 'src/app/not-found/not-found.component';
+import { InterceptorService } from './interceptor.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blog', pathMatch: 'full' },
