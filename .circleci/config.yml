@@ -29,7 +29,7 @@ jobs:
           command: ssh-keyscan -H prestonmontewest.com >> ~/.ssh/known_hosts
       - run:
           name: Deploy Static Files
-          command: scp -r dist/prestonmontewest/. ubuntu@prestonmontewest.com:/var/www/prestonmontewest/ui
+          command: scp -r dist/prestonmontewest/* ubuntu@prestonmontewest.com:/var/www/prestonmontewest/ui
 workflows:
   version: 2
   build-deploy:
