@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PostCreate, PostDisplay } from '../post';
 import { PostService } from '../post.service';
 import { UrlEncode } from '../../shared/url-encode.pipe';
 
 @Component({
-  selector: 'app-create-post',
+  selector: 'pmw-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
 })
@@ -21,7 +21,8 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    private urlEncode: UrlEncode
+    private urlEncode: UrlEncode,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
@@ -49,7 +50,7 @@ export class CreatePostComponent implements OnInit {
     this.postService.createPost(formData).subscribe(
       (post: PostDisplay) => {
         const title = this.urlEncode.transform(post.title);
-        this.router.navigate([`/post/${title}`])
+        this.router.navigate([`../${title}`], { relativeTo: this.activatedRoute })
       },
       (err) => {
         err = err.error;

@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 import { environment } from '../environments/environment';
 
 @Component({
-  selector: 'app-root',
+  selector: 'pmw-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

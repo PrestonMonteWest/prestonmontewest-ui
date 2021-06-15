@@ -6,7 +6,7 @@ import { PostDisplay } from '../post';
 import { PostService } from '../post.service';
 
 @Component({
-  selector: 'app-post-detail',
+  selector: 'pmw-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss'],
   encapsulation: ViewEncapsulation.None
