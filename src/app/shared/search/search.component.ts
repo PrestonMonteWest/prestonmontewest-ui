@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
 @Component({
-  selector: 'app-search',
+  selector: 'pmw-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })

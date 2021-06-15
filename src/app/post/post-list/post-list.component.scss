@@ -6,8 +6,8 @@ $margin: 40px;
   margin: $margin 0;
 
   $margin-small: 25px;
-  app-social {
-    margin-right: $margin-small;
+  pmw-social {
+    margin-left: $margin-small;
   }
 
   .post-list-container {
@@ -88,7 +88,7 @@ $margin: 40px;
   .post-list-page {
     flex-direction: column;
 
-    app-social {
+    pmw-social {
       margin: 0;
       margin-bottom: $margin;
     }
@@ -97,7 +97,7 @@ $margin: 40px;
 
 @media screen and (max-width: $phone-width) {
   .post-list-page {
-    app-social {
+    pmw-social {
       display: none;
     }
   }

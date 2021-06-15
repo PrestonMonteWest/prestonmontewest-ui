@@ -1,9 +1,7 @@
 <div class="post-list-page">
-  <app-social></app-social>
-
   <div class="post-list-container">
     <div class="toolbar">
-      <app-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></app-search>
+      <pmw-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></pmw-search>
       <button class="create-button" *ngIf="auth.isAdmin" routerLink="/blog/create">
         <i class="fas fa-plus"></i> Create
       </button>
@@ -32,4 +30,6 @@
       <p>No blog posts found!</p>
     </div>
   </div>
+
+  <pmw-social></pmw-social>
 </div>

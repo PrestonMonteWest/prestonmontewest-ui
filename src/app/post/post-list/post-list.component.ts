@@ -7,7 +7,7 @@ import { PostDisplay, PostFilter } from '../post';
 import { PostService } from '../post.service';
 
 @Component({
-  selector: 'app-post-list',
+  selector: 'pmw-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss'],
 })

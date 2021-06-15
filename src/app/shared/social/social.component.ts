@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-social',
+  selector: 'pmw-social',
   templateUrl: './social.component.html',
   styleUrls: ['./social.component.scss']
 })
