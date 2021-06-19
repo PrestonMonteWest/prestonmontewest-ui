@@ -1,11 +1,11 @@
 @import 'src/variables.scss';
 
 $margin: 40px;
+$margin-small: 25px;
 .post-list-page {
   display: flex;
   margin: $margin 0;
 
-  $margin-small: 25px;
   pmw-social {
     margin-left: $margin-small;
   }
@@ -63,14 +63,6 @@ $margin: 40px;
             font-size: 0.8rem;
           }
         }
-
-        .image {
-          flex: 0 0 $desktop-width * 0.15;
-          margin-left: $margin-small;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-        }
       }
 
       .post-list-item:first-child {
@@ -84,21 +76,36 @@ $margin: 40px;
   }
 }
 
+.image {
+  flex: 0 0 $desktop-width * 0.15;
+  margin-left: $margin-small;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: $tablet-width) {
   .post-list-page {
     flex-direction: column;
 
     pmw-social {
       margin: 0;
-      margin-bottom: $margin;
+      margin-top: $margin;
     }
   }
 }
 
 @media screen and (max-width: $phone-width) {
-  .post-list-page {
-    pmw-social {
-      display: none;
+  pmw-social {
+    display: none;
+  }
+
+  .post-list-item {
+    flex-direction: column;
+
+    .image {
+      margin: 0;
+      margin-top: $margin-small;
     }
   }
 }
