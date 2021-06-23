@@ -1,10 +1,9 @@
-$padding: 8px 10px;
-$default-padding: $padding;
+$small-padding: 8px 10px;
+$large-padding: 10px 15px;
+$default-padding: $small-padding;
 $content-padding-sides: 25px;
 
 $footer-height: 70px;
-
-$bright: rgb(255, 255, 255);
 
 $background-color: rgb(245, 245, 245);
 $default-background-color: $background-color;

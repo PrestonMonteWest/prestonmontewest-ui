@@ -7,7 +7,7 @@
     flex-grow: 1;
     height: $font-size;
     padding-right: 0;
-    background-color: $bright;
+    background-color: white;
     border: $border-size solid $border-color;
     border-right: none;
     border-top-right-radius: 0;
@@ -15,8 +15,8 @@
   }
 
   i {
-    padding: $padding;
-    background-color: $bright;
+    padding: $default-padding;
+    background-color: white;
     border: $border-size solid $border-color;
     border-left: none;
     border-top-right-radius: 5px;

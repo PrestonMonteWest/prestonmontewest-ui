@@ -34,8 +34,8 @@ h1, h2, h3, h4, h5, h6 {
 
 button {
   height: $font-size;
-  padding: $padding;
-  background-color: $bright;
+  padding: $default-padding;
+  background-color: white;
   border: $border-size solid $border-color;
   border-radius: 5px;
   color: $font-color;
@@ -47,11 +47,11 @@ button {
 
 .create-button {
   background-color: rgb(0, 150, 0);
-  color: $bright;
+  color: white;
 }
 
 input {
-  padding: $padding;
+  padding: $default-padding;
   border: $border-size solid $light-border-color;
   border-radius: 5px;
   color: $font-color;
