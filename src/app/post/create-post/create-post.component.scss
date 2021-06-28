@@ -1,41 +1,61 @@
-@import 'src/variables.scss';
+@import 'variables.scss';
 
-$margin: 40px;
+h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  line-height: 2rem;
+  font-weight: $light-font-weight;
+}
+
+.error {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: $default-padding;
+  border-radius: $border-radius;
+  border: $border-size solid rgb(255, 0, 0, 0.5);
+  background-color: rgb(255, 0, 0, 0.25);
+}
+
+$gap: 15px;
 form {
-  margin: $margin 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: $gap;
+  row-gap: $gap;
 
-  h2 {
-    font-size: 2.25rem;
-    line-height: 2rem;
-    font-weight: $light-font-weight;
+  .sub-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: $gap;
+    grid-auto-rows: min-content;
   }
 
-  .error {
-    display: inline-block;
-    margin: 0;
-    padding: $default-padding;
-    border-radius: 5px;
-    border: $border-size solid rgb(255, 0, 0, 0.5);
-    background-color: rgb(255, 0, 0, 0.25);
+  .editor, .buttons {
+    grid-column: span 2;
   }
 
-  .form-group {
-    margin: 20px 0;
+  .summary {
+    display: flex;
+    flex-direction: column;
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      text-align: left;
-      color: $light-font-color;
+    textarea {
+      flex-grow: 1;
+      resize: none;
     }
+  }
 
-    input {
-      width: 100%;
-      box-sizing: border-box;
-    }
+  $margin-small: 5px;
+  label {
+    display: block;
+    margin-bottom: $margin-small;
+  }
 
-    button {
-      margin: 0 5px;
-    }
+  button {
+    margin: 0 $margin-small;
+  }
+
+  button:first-child {
+    margin-left: 0;
   }
 }

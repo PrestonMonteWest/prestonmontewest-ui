@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'src/variables.scss';
+@import 'variables.scss';
 
 @font-face {
   font-family: "VCR OSD Mono";
@@ -7,20 +7,23 @@
 }
 
 * {
-  box-sizing: content-box;
-  outline: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
 html, body {
   height: 100%;
   margin: 0;
   background-color: $background-color;
-  text-align: center;
-  color: $font-color;
+  color: $light-font-color;
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
   -webkit-font-smoothing: antialiased;
+}
+
+.page-container {
+  margin: 40px 0;
 }
 
 a {
@@ -33,27 +36,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button {
-  height: $font-size;
   padding: $default-padding;
   background-color: white;
-  border: $border-size solid $border-color;
-  border-radius: 5px;
-  color: $font-color;
+  color: $light-font-color;
+  border: $border-size solid $light-border-color;
+  border-radius: $default-border-radius;
   font-family: $font-family;
   font-size: $font-size;
   white-space: nowrap;
   cursor: pointer;
+
+  i.fas {
+    margin-right: 5px;
+  }
 }
 
 .create-button {
-  background-color: rgb(0, 150, 0);
-  color: white;
+  background-color: $tertiary-color;
+  color: $light-font-color;
 }
 
-input {
+input, textarea {
+  width: 100%;
   padding: $default-padding;
   border: $border-size solid $light-border-color;
-  border-radius: 5px;
+  border-radius: $border-radius;
   color: $font-color;
   font-family: $font-family;
   font-size: $font-size;

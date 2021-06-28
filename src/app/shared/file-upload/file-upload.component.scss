@@ -1,0 +1,41 @@
+@import 'variables.scss';
+
+.drop-area {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed $border-color;
+  border-radius: $border-radius;
+  position: relative;
+  margin: 0 auto;
+  padding: 15px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.drop-area.active {
+  background-color: $active-color;
+}
+
+.message {
+  margin-left: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input:focus {
+  outline: none;
+}

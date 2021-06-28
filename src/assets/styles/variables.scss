@@ -1,3 +1,5 @@
+@import 'colors.scss';
+
 $small-padding: 8px 10px;
 $large-padding: 10px 15px;
 $default-padding: $small-padding;
@@ -5,8 +7,11 @@ $content-padding-sides: 25px;
 
 $footer-height: 70px;
 
-$background-color: rgb(245, 245, 245);
-$default-background-color: $background-color;
+$primary-color: $cadet;
+$secondary-color: $green-sheen;
+$tertiary-color: $aero-blue;
+$active-color: $fluorescent-blue;
+$background-color: white;
 
 $s3-url: "https://prestonmontewest.s3.us-east-2.amazonaws.com";
 $vcr-osd-mono-url: "#{$s3-url}/fonts/vcr-osd-mono.woff";
@@ -18,16 +23,20 @@ $default-font-weight: $font-weight;
 $light-font-weight: 300;
 $font-family: Arial, Helvetica, sans-serif;
 $default-font-family: $font-family;
-$font-color: rgb(0, 0, 0, 0.8);
+$font-color: $dark-slate-gray;
 $dark-font-color: $font-color;
-$default-font-color: $font-color;
-$light-font-color: rgb(0, 0, 0, 0.6);
+$light-font-color: $cadet;
+$default-font-color: $light-font-color;
 
 $border-size: 1px;
 $default-border-size: $border-size;
-$border-color: rgb(0, 0, 0, 0.4);
-$default-border-color: $border-color;
-$light-border-color: rgb(0, 0, 0, 0.2);
+$border-color: $gray;
+$light-border-color: $light-gray;
+$default-border-color: $light-border-color;
+$border-radius: 10px;
+$default-border-radius: $border-radius;
+
+$front-z-index: 10;
 
 // Responsive widths
 $desktop-width: 1120px;

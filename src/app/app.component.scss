@@ -1,4 +1,4 @@
-@import 'src/variables.scss';
+@import 'variables.scss';
 
 .site {
   // For footer
@@ -14,7 +14,7 @@
   h1 {
     padding: 25px 0;
     margin: 0;
-    background-color: rgb(136, 136, 255);
+    background-color: $primary-color;
     color: white;
     text-align: center;
     white-space: nowrap;
@@ -34,14 +34,14 @@
   nav {
     position: -webkit-sticky;
     position: sticky;
+    z-index: $front-z-index;
     top: 0;
     text-align: center;
 
-    $border-radius-size: 10px;
     ul {
       display: flex;
-      border-radius: 0 0 $border-radius-size $border-radius-size;
-      background-color: rgb(100, 100, 255);
+      border-radius: 0 0 $border-radius $border-radius;
+      background-color: $secondary-color;
       justify-content: center;
       margin: 0;
       padding: 0;
@@ -63,7 +63,8 @@
       }
 
       .nav-item.active-link {
-        background-color: rgb(136, 136, 255);
+        background-color: $active-color;
+        color: $light-font-color;
       }
     }
   }
@@ -83,6 +84,7 @@
       border-top: $border-size solid $border-color;
       white-space: nowrap;
       line-height: ($footer-height - $border-size);
+      text-align: center;
 
       .brand {
         white-space: inherit;

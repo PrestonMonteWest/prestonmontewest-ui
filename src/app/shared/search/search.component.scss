@@ -1,27 +1,28 @@
-@import 'src/variables.scss';
+@import 'variables.scss';
 
 .search-container {
   display: flex;
 
   input {
     flex-grow: 1;
-    height: $font-size;
     padding-right: 0;
     background-color: white;
-    border: $border-size solid $border-color;
+    border: $border-size solid $light-border-color;
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    color: $light-font-color;
   }
 
   i {
+    font-size: 18px;
     padding: $default-padding;
     background-color: white;
-    border: $border-size solid $border-color;
+    border: $border-size solid $light-border-color;
     border-left: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: $border-color;
+    color: $light-border-color;
     cursor: pointer;
   }
 }

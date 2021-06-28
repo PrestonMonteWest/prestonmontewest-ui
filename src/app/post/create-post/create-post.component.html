@@ -1,75 +1,57 @@
-<form>
-  <h2 class="form-group">Create Post</h2>
 
+<div class="page-container">
+  <h2>Create Post</h2>
   <p *ngIf="error" class="error">{{ error }}</p>
-
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input
-      type="text"
-      class="form-control"
-      id="title"
-      required
-      [(ngModel)]="model.title"
-      name="title"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="summary">Summary</label>
-    <input
-      type="text"
-      class="form-control"
-      id="summary"
-      required
-      [(ngModel)]="model.summary"
-      name="summary"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="image">Image</label>
-    <input
-      #imageControl
-      type="file"
-      class="form-control"
-      id="image"
-      required
-      (change)="onImageChange(imageControl)"
-      name="image"
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="content">Content</label>
-    <editor
-      [init]="{
-        height: 500,
-        menubar: false,
-        plugins: [
-          'advlist autolink lists link image charmap print',
-          'preview anchor searchreplace visualblocks code',
-          'fullscreen insertdatetime media table paste',
-          'help wordcount'
-        ],
-        toolbar:
-          'undo redo | formatselect | bold italic | \
-          alignleft aligncenter alignright alignjustify | \
-          bullist numlist outdent indent | help'
-      }"
-      id="content"
-      required
-      [(ngModel)]="model.content"
-      name="content"
-    ></editor>
-  </div>
-
-  <div class="form-group">
-    <button class="create-button" type="submit" (click)="createPost()">
-      <i class="fas fa-plus"></i> Create
-    </button>
-    <button routerLink="/post">
-      <i class="fas fa-arrow-left"></i> Cancel
-    </button>
-  </div>
-</form>
+  <form [formGroup]="createPostForm">
+    <div class="sub-grid">
+      <div>
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          formControlName="title"
+        >
+      </div>
+      <div>
+        <label for="image">Image</label>
+        <pmw-file-upload id="image" formControlName="image"></pmw-file-upload>
+      </div>
+    </div>
+    <div class="summary">
+      <label for="summary">Summary</label>
+      <textarea
+        id="summary"
+        formControlName="summary"
+      ></textarea>
+    </div>
+    <div class="editor">
+      <label for="content">Content</label>
+      <editor
+        id="content"
+        [init]="{
+          height: 500,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print',
+            'preview anchor searchreplace visualblocks code',
+            'fullscreen insertdatetime media table paste',
+            'help wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | help'
+        }"
+        formControlName="content"
+      ></editor>
+    </div>
+    <div class="buttons">
+      <button (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Cancel
+      </button>
+      <button class="create-button" type="submit" (click)="createPost()">
+        <i class="fas fa-plus"></i> Create
+      </button>
+    </div>
+  </form>
+</div>

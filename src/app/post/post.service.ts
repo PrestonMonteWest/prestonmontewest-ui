@@ -37,8 +37,8 @@ export class PostService {
     );
   }
 
-  createPost(formData: FormData): Observable<PostDisplay> {
-    return this.http.post<PostDisplay>(this.postApiUrl, formData);
+  createPost(data: FormData): Observable<PostDisplay> {
+    return this.http.post<PostDisplay>(this.postApiUrl, data);
   }
 
   incrementViewCount(postTitle: string): Observable<Partial<PostDisplay>> {

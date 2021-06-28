@@ -1,9 +1,10 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { PostCreate, PostDisplay } from '../post';
-import { PostService } from '../post.service';
 import { UrlEncode } from '../../shared/url-encode.pipe';
+import { PostDisplay } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'pmw-create-post',
@@ -11,44 +12,29 @@ import { UrlEncode } from '../../shared/url-encode.pipe';
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-  model: PostCreate = {
-    title: '',
-    summary: '',
-    image: null,
-    content: ''
-  };
+  createPostForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    summary: new FormControl('', Validators.required),
+    image: new FormControl(null, Validators.required),
+    content: new FormControl('', Validators.required)
+  });
+
   error: string = '';
+
   constructor(
     private postService: PostService,
     private router: Router,
     private urlEncode: UrlEncode,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
   ) {}
 
   ngOnInit(): void {}
 
-  onImageChange(imageControl: HTMLInputElement) {
-    this.error = '';
-    const image: File = imageControl.files[0];
-    if (image.type.split('/')[0] !== 'image') {
-      imageControl.value = null;
-      const errMessage: string = 'File type must be an image';
-      console.error(errMessage);
-      this.error = errMessage;
-    }
-
-    this.model.image = image;
-  }
-
   createPost(): void {
     this.error = '';
-    const formData = new FormData();
-    formData.append('title', this.model.title);
-    formData.append('summary', this.model.summary);
-    formData.append('image', this.model.image);
-    formData.append('content', this.model.content);
-    this.postService.createPost(formData).subscribe(
-      (post: PostDisplay) => {
+    this.postService.createPost(this.convertToFormData(this.createPostForm.value))
+      .subscribe((post: PostDisplay) => {
         const title = this.urlEncode.transform(post.title);
         this.router.navigate([`../${title}`], { relativeTo: this.activatedRoute })
       },
@@ -58,9 +44,21 @@ export class CreatePostComponent implements OnInit {
         if ('message' in err) {
           this.error = err.message;
         } else {
-          this.error = 'Internal error';
+          this.error = 'Internal error.';
         }
-      }
+      });
+  }
+
+  convertToFormData(createPostFormValue: any) {
+    const data = new FormData();
+    Object.keys(createPostFormValue).forEach(
+      (key) => data.append(key, createPostFormValue[key])
     );
+
+    return data;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

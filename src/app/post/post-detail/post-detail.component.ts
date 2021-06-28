@@ -39,7 +39,7 @@ export class PostDetailComponent implements OnInit {
         });
         this.postService.incrementViewCount(title).subscribe(
           null,
-          (err: any) => console.log(err)
+          (err: any) => console.error(err)
         );
       },
       (err: any) => {

@@ -1,10 +1,9 @@
-@import 'src/variables.scss';
+@import 'variables.scss';
 
 $margin: 40px;
 $margin-small: 25px;
-.post-list-page {
+.page-container {
   display: flex;
-  margin: $margin 0;
 
   pmw-social {
     margin-left: $margin-small;
@@ -29,7 +28,6 @@ $margin-small: 25px;
         justify-content: space-between;
         margin: $margin 0;
         text-align: left;
-        color: $font-color;
 
         .content {
           display: flex;
@@ -44,6 +42,7 @@ $margin-small: 25px;
             margin: 0;
             letter-spacing: -0.5px;
             font-size: 1.4rem;
+            color: $font-color;
           }
 
           p {

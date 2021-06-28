@@ -1,6 +1,6 @@
 {
   "name": "prestonmontewest-ui",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "private": true,
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json --open --port 4000",

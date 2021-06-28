@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { SocialComponent } from './social/social.component';
 import { UrlEncode } from './url-encode.pipe';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
     SearchComponent,
     SocialComponent,
-    UrlEncode
+    UrlEncode,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { UrlEncode } from './url-encode.pipe';
   exports: [
     SearchComponent,
     SocialComponent,
-    UrlEncode
+    UrlEncode,
+    FileUploadComponent
   ]
 })
 export class SharedModule {}
