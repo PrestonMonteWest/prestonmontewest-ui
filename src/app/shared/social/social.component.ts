@@ -11,7 +11,6 @@ export class SocialComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    // @ts-ignore
-    twttr && twttr.widgets.load();
+    (window as any).twttr?.widgets.load();
   }
 }

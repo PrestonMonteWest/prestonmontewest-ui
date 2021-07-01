@@ -20,8 +20,8 @@
     background-color: white;
     border: $border-size solid $light-border-color;
     border-left: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
     color: $light-border-color;
     cursor: pointer;
   }
