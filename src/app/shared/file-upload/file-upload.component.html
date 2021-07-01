@@ -1,5 +1,7 @@
 <div class="drop-area" [ngClass]="{ active: this.file }">
   <button>Choose File</button>
-  <div class="message">{{ file ? file.name : 'or drag and drop file here' }}</div>
-  <input class="file-input" type="file">
+  <div class="message">
+    {{ file ? file.name : "or drag and drop file here" }}
+  </div>
+  <input class="file-input" type="file" />
 </div>

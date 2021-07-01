@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Title, Meta } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import { PostDisplay } from '../post';
-import { PostService } from '../post.service';
+import { PostDisplay } from "../post";
+import { PostService } from "../post.service";
 
 @Component({
-  selector: 'pmw-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: "pmw-post-detail",
+  templateUrl: "./post-detail.component.html",
+  styleUrls: ["./post-detail.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PostDetailComponent implements OnInit {
   post: PostDisplay;
@@ -28,23 +28,23 @@ export class PostDetailComponent implements OnInit {
   }
 
   getPost(): void {
-    const title: string = this.route.snapshot.paramMap.get('title');
+    const title: string = this.route.snapshot.paramMap.get("title");
     this.postService.getPostByTitle(title).subscribe(
       (post: PostDisplay) => {
         this.post = post;
         this.pageId = post.title;
         this.title.setTitle(post.title);
         this.meta.updateTag({
-          name: 'description', content: this.post.summary
+          name: "description",
+          content: this.post.summary,
         });
-        this.postService.incrementViewCount(title).subscribe(
-          null,
-          (err: any) => console.error(err)
-        );
+        this.postService
+          .incrementViewCount(title)
+          .subscribe(null, (err: any) => console.error(err));
       },
       (err: any) => {
         console.error(err);
-        this.router.navigate(['not-found']);
+        this.router.navigate(["not-found"]);
       }
     );
   }

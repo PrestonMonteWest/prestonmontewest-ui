@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-
-import { AuthService } from '../../auth.service';
-import { PostDisplay, PostFilter } from '../post';
-import { PostService } from '../post.service';
+import { Component, OnInit } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { PostDisplay, PostFilter } from "../post";
+import { PostService } from "../post.service";
 
 @Component({
-  selector: 'pmw-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.scss'],
+  selector: "pmw-post-list",
+  templateUrl: "./post-list.component.html",
+  styleUrls: ["./post-list.component.scss"],
 })
 export class PostListComponent implements OnInit {
   posts: PostDisplay[] = [];
@@ -26,14 +25,14 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     this.title.setTitle("Preston Monte West");
     this.meta.updateTag({
-      name: 'description',
-      content: "A blog by Preston Monte West."
+      name: "description",
+      content: "A blog by Preston Monte West.",
     });
 
     this.activatedRoute.queryParams.subscribe((params) => {
       const filter: PostFilter = {
-        title: params['title'],
-        limit: params['limit']
+        title: params["title"],
+        limit: params["limit"],
       };
       this.getPosts(filter);
     });
@@ -46,12 +45,12 @@ export class PostListComponent implements OnInit {
 
   private getPosts(filter: PostFilter): void {
     this.postService.getPosts(filter).subscribe(
-      (posts: PostDisplay[]) => this.posts = posts,
+      (posts: PostDisplay[]) => (this.posts = posts),
       (err: any) => {
         console.error(err);
         this.retrievedPosts = true;
       },
-      () => this.retrievedPosts = true
+      () => (this.retrievedPosts = true)
     );
   }
 }

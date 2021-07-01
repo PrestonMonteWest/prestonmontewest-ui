@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 h2 {
   text-align: center;
@@ -31,7 +31,8 @@ form {
     grid-auto-rows: min-content;
   }
 
-  .editor, .buttons {
+  .editor,
+  .buttons {
     grid-column: span 2;
   }
 

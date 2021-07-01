@@ -1,29 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import createAuth0Client, {
   GetTokenSilentlyOptions,
   GetUserOptions,
-  RedirectLoginResult
-} from '@auth0/auth0-spa-js';
-import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
-import { from, Observable, combineLatest } from 'rxjs';
-import { tap, concatMap, shareReplay } from 'rxjs/operators';
-
-import { environment } from '../environments/environment';
+  RedirectLoginResult,
+} from "@auth0/auth0-spa-js";
+import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
+import { combineLatest, from, Observable } from "rxjs";
+import { concatMap, shareReplay, tap } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
   // Create an observable of Auth0 instance of client
-  auth0Client$ = (from(
-    createAuth0Client({
-      domain: environment.auth0.domain,
-      client_id: environment.auth0.clientId,
-      redirect_uri: `${window.location.origin}`,
-      audience: environment.auth0.audience
-    })
-  ) as Observable<Auth0Client>).pipe(
+  auth0Client$ = (
+    from(
+      createAuth0Client({
+        domain: environment.auth0.domain,
+        client_id: environment.auth0.clientId,
+        redirect_uri: `${window.location.origin}`,
+        audience: environment.auth0.audience,
+      })
+    ) as Observable<Auth0Client>
+  ).pipe(
     shareReplay(1) // Every subscription receives the same shared value
   );
   // Define observables for SDK methods that return promises by default
@@ -32,10 +33,10 @@ export class AuthService {
   // from: Convert that resulting promise into an observable
   isAuthenticated$: Observable<boolean> = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap((isAuthenticated) => this.loggedIn = isAuthenticated)
+    tap((isAuthenticated) => (this.loggedIn = isAuthenticated))
   );
-  handleRedirectCallback$: Observable<RedirectLoginResult> = this.auth0Client$
-    .pipe(
+  handleRedirectCallback$: Observable<RedirectLoginResult> =
+    this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
     );
   loggedIn: boolean = false;
@@ -56,8 +57,8 @@ export class AuthService {
   private handleAuthCallback(): void {
     // Call when app reloads after user logs in with Auth0
     const params = window.location.search;
-    if (params.includes('code=') && params.includes('state=')) {
-      let targetRoute: string = '/'; // Path to redirect to after login processsed
+    if (params.includes("code=") && params.includes("state=")) {
+      let targetRoute: string = "/"; // Path to redirect to after login processsed
       const authComplete$ = this.handleRedirectCallback$.pipe(
         tap((cbRes: RedirectLoginResult) => {
           // Get and set target redirect route from callback result
@@ -66,7 +67,7 @@ export class AuthService {
           }
         }),
         concatMap(() => {
-          return combineLatest([ this.isAuthenticated$, this.getUser$() ]);
+          return combineLatest([this.isAuthenticated$, this.getUser$()]);
         })
       );
       // Subscribe to authentication completion observable
@@ -82,12 +83,12 @@ export class AuthService {
   getUser$(options?: GetUserOptions): Observable<any> {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getUser(options))),
-      tap((user) => this.userProfile = user)
+      tap((user) => (this.userProfile = user))
     );
   }
 
   get isAdmin(): boolean {
-    const adminEmail: string = 'prestonmontewest@gmail.com';
+    const adminEmail: string = "prestonmontewest@gmail.com";
     return this.userProfile && this.userProfile.email === adminEmail;
   }
 
@@ -97,20 +98,20 @@ export class AuthService {
     );
   }
 
-  login(redirectPath: string = '/'): void {
+  login(redirectPath: string = "/"): void {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.loginWithRedirect({
         redirect_uri: `${window.location.origin}`,
-        appState: { target: redirectPath }
+        appState: { target: redirectPath },
       });
     });
   }
 
-  logout(returnToPath: string = '/'): void {
+  logout(returnToPath: string = "/"): void {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.logout({
         client_id: environment.auth0.clientId,
-        returnTo: `${window.location.origin}${returnToPath}`
+        returnTo: `${window.location.origin}${returnToPath}`,
       });
     });
   }

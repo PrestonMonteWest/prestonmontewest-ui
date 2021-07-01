@@ -1,15 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from "./admin.guard";
 
-describe('AuthGuard', () => {
+describe("AuthGuard", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AdminGuard]
+      providers: [AdminGuard],
     });
   });
 
-  it('should ...', inject([AdminGuard], (guard: AdminGuard) => {
+  it("should ...", inject([AdminGuard], (guard: AdminGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

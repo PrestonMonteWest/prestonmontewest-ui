@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'variables.scss';
+@import "variables.scss";
 
 @font-face {
   font-family: "VCR OSD Mono";
@@ -11,7 +11,8 @@
   outline: none;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   background-color: $background-color;
@@ -31,7 +32,12 @@ a {
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: $light-font-weight;
 }
 
@@ -56,7 +62,8 @@ button {
   color: $light-font-color;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: $default-padding;
   border: $border-size solid $light-border-color;

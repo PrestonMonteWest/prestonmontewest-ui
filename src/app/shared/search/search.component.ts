@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Subscription, timer } from "rxjs";
 
 @Component({
-  selector: 'pmw-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: "pmw-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.scss"],
 })
 export class SearchComponent implements OnInit {
-  private lastSearchText = '';
-  searchText: string = '';
+  private lastSearchText = "";
+  searchText: string = "";
   private timerSubscription: Subscription = null;
-  @Input() placeholder: string = '';
+  @Input() placeholder: string = "";
   @Input() delay: number = 300;
   @Output() search: EventEmitter<string> = new EventEmitter();
 

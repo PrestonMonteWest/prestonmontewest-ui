@@ -1,8 +1,15 @@
 <div class="page-container">
   <div class="post-list-container">
     <div class="toolbar">
-      <pmw-search (search)="handleSearch($event)" [placeholder]="'Search posts'"></pmw-search>
-      <button class="create-button" *ngIf="auth.isAdmin" routerLink="/blog/create">
+      <pmw-search
+        (search)="handleSearch($event)"
+        [placeholder]="'Search posts'"
+      ></pmw-search>
+      <button
+        class="create-button"
+        *ngIf="auth.isAdmin"
+        routerLink="/blog/create"
+      >
         <i class="fas fa-plus"></i> Create
       </button>
     </div>
@@ -11,7 +18,8 @@
       <a
         class="post-list-item"
         *ngFor="let post of posts"
-        routerLink="/blog/{{ post.title | urlEncode }}">
+        routerLink="/blog/{{ post.title | urlEncode }}"
+      >
         <div class="content">
           <h2>{{ post.title }}</h2>
           <p class="summary">{{ post.summary }}</p>

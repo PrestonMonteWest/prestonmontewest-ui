@@ -1,4 +1,3 @@
-
 <div class="page-container">
   <h2>Create Post</h2>
   <p *ngIf="error" class="error">{{ error }}</p>
@@ -6,11 +5,7 @@
     <div class="sub-grid">
       <div>
         <label for="title">Title</label>
-        <input
-          id="title"
-          type="text"
-          formControlName="title"
-        >
+        <input id="title" type="text" formControlName="title" />
       </div>
       <div>
         <label for="image">Image</label>
@@ -19,10 +14,7 @@
     </div>
     <div class="summary">
       <label for="summary">Summary</label>
-      <textarea
-        id="summary"
-        formControlName="summary"
-      ></textarea>
+      <textarea id="summary" formControlName="summary"></textarea>
     </div>
     <div class="editor">
       <label for="content">Content</label>

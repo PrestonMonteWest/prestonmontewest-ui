@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { PostDisplay, PostFilter } from './post';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { PostDisplay, PostFilter } from "./post";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PostService {
-  postApiUrl = '/api/post';
+  postApiUrl = "/api/post";
 
   constructor(private http: HttpClient) {}
 
@@ -20,19 +19,21 @@ export class PostService {
   getPosts(filter: PostFilter): Observable<PostDisplay[]> {
     const options = { params: new HttpParams() };
     if (filter.title) {
-      options.params = options.params.set('title', `${filter.title}`);
+      options.params = options.params.set("title", `${filter.title}`);
     }
     if (filter.limit) {
-      options.params = options.params.set('limit', `${filter.limit}`);
+      options.params = options.params.set("limit", `${filter.limit}`);
     }
     return this.http.get<PostDisplay[]>(this.postApiUrl, options).pipe(
-      map((posts: PostDisplay[]) => posts.map((post: PostDisplay) => {
-        post.publishDate = new Date(post.publishDate as unknown as string);
-        if (post.editDate) {
-          post.editDate = new Date(post.editDate as unknown as string);
-        }
-        return post;
-      }))
+      map((posts: PostDisplay[]) =>
+        posts.map((post: PostDisplay) => {
+          post.publishDate = new Date(post.publishDate as unknown as string);
+          if (post.editDate) {
+            post.editDate = new Date(post.editDate as unknown as string);
+          }
+          return post;
+        })
+      )
     );
   }
 

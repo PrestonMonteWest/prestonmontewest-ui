@@ -1,4 +1,8 @@
 <div class="search-container">
-  <input [(ngModel)]="searchText" (keyup)="onKeyup()" [placeholder]="placeholder">
+  <input
+    [(ngModel)]="searchText"
+    (keyup)="onKeyup()"
+    [placeholder]="placeholder"
+  />
   <i class="fas fa-search" (click)="emitSearch()"></i>
 </div>
