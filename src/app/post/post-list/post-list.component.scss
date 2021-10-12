@@ -14,10 +14,16 @@ $margin-small: 25px;
 
     $margin-tiny: 15px;
     .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       margin-bottom: $margin;
-      text-align: left;
 
-      .create-button {
+      pmw-search {
+        flex-basis: 100%;
+      }
+
+      & > *:not(pmw-search) {
         margin-top: $margin-tiny;
       }
     }

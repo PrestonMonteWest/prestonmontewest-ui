@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
+import { Post, PostCategory } from "@prestonmontewest/entities";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { PostDisplay, PostFilter } from "../post";
+import { PostFilter } from "../post";
 import { PostService } from "../post.service";
 
 @Component({
@@ -11,7 +12,8 @@ import { PostService } from "../post.service";
   styleUrls: ["./post-list.component.scss"],
 })
 export class PostListComponent implements OnInit {
-  posts: PostDisplay[] = [];
+  posts: Post[] = [];
+  categories = [...new Set(Object.keys(PostCategory))];
   retrievedPosts: boolean = false;
 
   constructor(
@@ -45,7 +47,7 @@ export class PostListComponent implements OnInit {
 
   private getPosts(filter: PostFilter): void {
     this.postService.getPosts(filter).subscribe(
-      (posts: PostDisplay[]) => (this.posts = posts),
+      (posts: Post[]) => (this.posts = posts),
       (err: any) => {
         console.error(err);
         this.retrievedPosts = true;

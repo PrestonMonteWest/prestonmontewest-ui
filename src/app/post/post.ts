@@ -1,21 +1,7 @@
-export interface BasePost {
-  title: string;
-  summary: string;
-  content: string;
-}
-
-export interface PostCreate extends BasePost {
-  image: File;
-}
-
-export interface PostDisplay extends BasePost {
-  image: string;
-  publishDate: Date;
-  editDate?: Date;
-  viewCount: number;
-}
+import { PostCategory } from "@prestonmontewest/entities";
 
 export interface PostFilter {
   title?: string;
   limit?: number;
+  category?: PostCategory;
 }

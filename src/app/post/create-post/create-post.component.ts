@@ -2,8 +2,8 @@ import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Post } from "@prestonmontewest/entities";
 import { UrlEncode } from "../../shared/url-encode.pipe";
-import { PostDisplay } from "../post";
 import { PostService } from "../post.service";
 
 @Component({
@@ -36,7 +36,7 @@ export class CreatePostComponent implements OnInit {
     this.postService
       .createPost(this.convertToFormData(this.createPostForm.value))
       .subscribe(
-        (post: PostDisplay) => {
+        (post: Post) => {
           const title = this.urlEncode.transform(post.title);
           this.router.navigate([`../${title}`], {
             relativeTo: this.activatedRoute,

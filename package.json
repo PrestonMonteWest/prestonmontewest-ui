@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^9.0.7",
     "@angular/router": "^9.0.7",
     "@auth0/auth0-spa-js": "^1.7.0",
+    "@prestonmontewest/entities": "^2.0.0",
     "@tinymce/tinymce-angular": "^3.5.0",
     "ngx-disqus": "^2.4.3",
     "rxjs": "^6.5.5",

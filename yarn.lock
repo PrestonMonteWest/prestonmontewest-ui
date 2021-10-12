@@ -1109,6 +1109,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@prestonmontewest/entities@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prestonmontewest/entities/-/entities-2.0.0.tgz#4e24282fa02ab47beecb27b136bb11892a9eb964"
+  integrity sha512-hyt5IszZNSKwaofeMA0pRMPIEx2vpoVKFjxy9/mlXhi8StexcUTYX0Uce8GMRaHoPviFuhub+sZVSnwjUWh/nA==
+
 "@schematics/angular@9.1.15":
   version "9.1.15"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-9.1.15.tgz#6fddac20ab62cb5f9178b5fafd35175169f96cf1"

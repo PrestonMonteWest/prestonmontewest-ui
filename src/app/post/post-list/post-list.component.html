@@ -6,12 +6,14 @@
         placeholder="Search posts"
       ></pmw-search>
       <button
-        class="create-button"
         *ngIf="auth.isAdmin"
         routerLink="/blog/create"
       >
         <i class="fas fa-plus"></i> Create
       </button>
+      <select>
+        <option *ngFor="let category of categories" [value]="category">{{ category | titlecase }}</option>
+      </select>
     </div>
 
     <div class="post-list" *ngIf="posts.length > 0">
