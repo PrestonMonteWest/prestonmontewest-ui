@@ -1,6 +1,6 @@
 import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UrlEncode } from "../../shared/url-encode.pipe";
 import { PostDisplay } from "../post";
@@ -12,11 +12,11 @@ import { PostService } from "../post.service";
   styleUrls: ["./create-post.component.scss"],
 })
 export class CreatePostComponent implements OnInit {
-  createPostForm = new FormGroup({
-    title: new FormControl("", Validators.required),
-    summary: new FormControl("", Validators.required),
-    image: new FormControl(null, Validators.required),
-    content: new FormControl("", Validators.required),
+  createPostForm = new UntypedFormGroup({
+    title: new UntypedFormControl("", Validators.required),
+    summary: new UntypedFormControl("", Validators.required),
+    image: new UntypedFormControl(null, Validators.required),
+    content: new UntypedFormControl("", Validators.required),
   });
 
   error: string = "";
