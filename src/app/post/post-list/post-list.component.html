@@ -6,8 +6,8 @@
         placeholder="Search posts"
       ></pmw-search>
       <button
+        *ngIf="canCreatePost$ | async"
         class="create-button"
-        *ngIf="auth.isAdmin"
         routerLink="/blog/create"
       >
         <i class="fas fa-plus"></i> Create
@@ -24,12 +24,12 @@
           <h2>{{ post.title }}</h2>
           <p class="summary">{{ post.summary }}</p>
           <p class="date">
-            <i class="far fa-calendar-alt"></i> {{ post.publishDate | date }}
+            <i class="far fa-calendar-alt"></i> {{ post.publishTime | date }}
           </p>
         </div>
         <div
           class="image"
-          [ngStyle]="{ 'background-image': 'url(' + post.image + ')' }"
+          [ngStyle]="{ 'background-image': 'url(' + post.imageUrl + ')' }"
         ></div>
       </a>
     </div>

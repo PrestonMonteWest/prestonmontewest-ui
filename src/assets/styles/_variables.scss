@@ -1,4 +1,4 @@
-@import "colors.scss";
+@import 'colors.scss';
 
 $small-padding: 8px 10px;
 $large-padding: 10px 15px;
@@ -13,8 +13,7 @@ $tertiary-color: $aero-blue;
 $active-color: $fluorescent-blue;
 $background-color: white;
 
-$s3-url: "https://prestonmontewest.s3.us-east-2.amazonaws.com";
-$vcr-osd-mono-url: "#{$s3-url}/fonts/vcr-osd-mono.woff";
+$vcr-osd-mono-url: '/assets/fonts/vcr-osd-mono.ttf';
 
 $font-size: 16px;
 $default-font-size: $font-size;

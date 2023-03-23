@@ -1,13 +1,13 @@
-import { Pipe, PipeTransform, Injectable } from "@angular/core";
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "urlEncode",
+  name: 'urlEncode',
 })
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class UrlEncode implements PipeTransform {
   transform(value: string): string {
-    return value.toLowerCase().replace(/ /g, "-");
+    return value.toLowerCase().replace(/ /g, '-');
   }
 }

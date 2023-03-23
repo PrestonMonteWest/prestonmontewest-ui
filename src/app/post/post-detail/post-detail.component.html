@@ -1,7 +1,7 @@
 <div *ngIf="post" class="page-container post-detail">
   <h2 class="title">{{ post.title }}</h2>
   <p class="summary">{{ post.summary }}</p>
-  <img class="cover-image" [src]="post.image" />
+  <img class="cover-image" [src]="post.imageUrl" />
   <div class="content" [innerHTML]="post.content"></div>
   <disqus [identifier]="pageId"></disqus>
 </div>

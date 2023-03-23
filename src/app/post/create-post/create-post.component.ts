@@ -1,25 +1,29 @@
-import { Location } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { UrlEncode } from "../../shared/url-encode.pipe";
-import { PostDisplay } from "../post";
-import { PostService } from "../post.service";
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { UrlEncode } from '../../shared/url-encode.pipe';
+import { PostService } from '../post.service';
 
 @Component({
-  selector: "pmw-create-post",
-  templateUrl: "./create-post.component.html",
-  styleUrls: ["./create-post.component.scss"],
+  selector: 'pmw-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.scss'],
 })
-export class CreatePostComponent implements OnInit {
+export class CreatePostComponent {
   createPostForm = new UntypedFormGroup({
-    title: new UntypedFormControl("", Validators.required),
-    summary: new UntypedFormControl("", Validators.required),
+    title: new UntypedFormControl('', Validators.required),
+    summary: new UntypedFormControl('', Validators.required),
     image: new UntypedFormControl(null, Validators.required),
-    content: new UntypedFormControl("", Validators.required),
+    content: new UntypedFormControl('', Validators.required),
   });
 
-  error: string = "";
+  error = '';
 
   constructor(
     private postService: PostService,
@@ -29,29 +33,27 @@ export class CreatePostComponent implements OnInit {
     private location: Location
   ) {}
 
-  ngOnInit(): void {}
-
-  createPost(): void {
-    this.error = "";
+  createPost() {
+    this.error = '';
     this.postService
       .createPost(this.convertToFormData(this.createPostForm.value))
-      .subscribe(
-        (post: PostDisplay) => {
+      .subscribe({
+        next: (post) => {
           const title = this.urlEncode.transform(post.title);
           this.router.navigate([`../${title}`], {
             relativeTo: this.activatedRoute,
           });
         },
-        (err) => {
+        error: (err) => {
           err = err.error;
           console.error(err);
-          if ("message" in err) {
+          if ('message' in err) {
             this.error = err.message;
           } else {
-            this.error = "Internal error.";
+            this.error = 'Internal error.';
           }
-        }
-      );
+        },
+      });
   }
 
   convertToFormData(createPostFormValue: any) {

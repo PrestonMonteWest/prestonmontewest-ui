@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import "variables.scss";
+
+@import 'variables';
 
 @font-face {
-  font-family: "VCR OSD Mono";
-  src: url($vcr-osd-mono-url) format("woff");
+  font-family: 'VCR OSD Mono';
+  src: url($vcr-osd-mono-url) format('truetype');
 }
 
 * {

@@ -8,12 +8,20 @@
         </a>
       </li>
       <li>
-        <a *ngIf="!auth.loggedIn" class="nav-item" (click)="auth.login(route)">
+        <a
+          *ngIf="!(auth.auth0.isAuthenticated$ | async)"
+          class="nav-item"
+          (click)="auth.auth0.loginWithRedirect()"
+        >
           <i class="fas fa-sign-in-alt"></i> Log In
         </a>
       </li>
       <li>
-        <a *ngIf="auth.loggedIn" class="nav-item" (click)="auth.logout()">
+        <a
+          *ngIf="auth.auth0.isAuthenticated$ | async"
+          class="nav-item"
+          (click)="logout()"
+        >
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>

@@ -1,16 +1,22 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 
-import { CreatePostComponent } from "./create-post/create-post.component";
-import { PostDetailComponent } from "./post-detail/post-detail.component";
-import { PostListComponent } from "./post-list/post-list.component";
-
-import { AdminGuard } from "../admin.guard";
+import { environment } from '../../environments/environment';
+import { permissionsGuard } from '../shared/guards/permissions.guard';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 const routes: Routes = [
-  { path: "", component: PostListComponent },
-  { path: "create", component: CreatePostComponent, canActivate: [AdminGuard] },
-  { path: ":title", component: PostDetailComponent },
+  { path: '', component: PostListComponent },
+  {
+    path: 'create',
+    component: CreatePostComponent,
+    data: { permissions: [environment.auth0.createPostScope] },
+    canActivate: [AuthGuard, permissionsGuard()],
+  },
+  { path: ':title', component: PostDetailComponent },
 ];
 
 @NgModule({

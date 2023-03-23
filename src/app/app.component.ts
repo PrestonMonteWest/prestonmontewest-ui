@@ -1,32 +1,33 @@
-import { Location } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { environment } from "../environments/environment";
-import { AuthService } from "./shared/services/auth/auth.service";
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
+import { environment } from '../environments/environment';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
-  selector: "pmw-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'pmw-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = environment.title;
   year = new Date().getFullYear();
-  route: string;
+  isAuthenticated = false;
 
   constructor(
-    public auth: AuthService,
-    private router: Router,
-    private location: Location
+    public readonly auth: AuthService,
+    private readonly titleService: Title,
+    @Inject(DOCUMENT) private readonly doc: Document
   ) {}
 
-  ngOnInit(): void {
-    this.router.events.subscribe((value) => {
-      if (this.location.path() !== "") {
-        this.route = this.location.path();
-      } else {
-        this.route = "/";
-      }
+  ngOnInit() {
+    this.titleService.setTitle(this.title);
+  }
+
+  logout() {
+    this.auth.auth0.logout({
+      logoutParams: { returnTo: this.doc.location.origin },
     });
   }
 }
